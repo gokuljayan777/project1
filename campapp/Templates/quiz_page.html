@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #121212;  /* Dark Background */
+    color: #ddd;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Form Container */
+form {
+    background: #222;
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Category Header */
+.category {
+    background: #444;
+    color: #ff9800; /* Orange for contrast */
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* Question Container */
+.quiz-container {
+    background: #333;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border: 1px solid #555;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.quiz-container:hover {
+    transform: scale(1.02);
+}
+
+/* Question Text */
+.question h3 {
+    color: #ff9800;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Question Image */
+.question-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+    border: 2px solid #ff9800;
+}
+
+/* Answer Options */
+.options {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.options button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background: #222;
+    border: 2px solid #ff9800;
+    color: #ff9800;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.options button:hover {
+    background: #ff9800;
+    color: black;
+}
+
+/* Highlight Correct & Incorrect Answers */
+.options button.correct {
+    background: green !important;
+    color: white !important;
+    border-color: green !important;
+}
+
+.options button.wrong {
+    background: red !important;
+    color: white !important;
+    border-color: red !important;
+}
+
+/* Explanation Box */
+.explanation {
+    margin-top: 10px;
+    padding: 12px;
+    background: rgba(255, 152, 0, 0.2);
+    border-left: 4px solid #ff9800;
+    display: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #ffcc80;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background: #ff9800;
+    color: black;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background: #e68900;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+}
+
+    </style>
+</head>
+<h2>Career Aptitude Quiz</h2>
+<form method="post">
+    {% csrf_token %}
+    
+    {% regroup questions by category as grouped_questions %}
+
+{% for group in grouped_questions %}
+    <h2 class="category">{{ group.grouper }}</h2>  <!-- Category displayed only once -->
+
+    {% for question in group.list %}
+        <div class="quiz-container" id="question{{ question.id }}">
+            <div class="question">
+                <h3>Question {{ forloop.counter }}:</h3>
+                {% if question.image %}
+                    <img src="{{ question.image.url }}" alt="Question Image" class="question-image">
+                {% endif %}
+
+                <p>{{ question.text }}</p>
+            </div>
+            <ul class="options">
+                <li><button type="button" onclick="selectAnswer(this, '{{ question.id }}', 'a', '{{ question.correct_answer }}')">{{ question.option_a }}</button></li>
+                <li><button type="button" onclick="selectAnswer(this, '{{ question.id }}', 'b', '{{ question.correct_answer }}')">{{ question.option_b }}</button></li>
+                <li><button type="button" onclick="selectAnswer(this, '{{ question.id }}', 'c', '{{ question.correct_answer }}')">{{ question.option_c }}</button></li>
+                <li><button type="button" onclick="selectAnswer(this, '{{ question.id }}', 'd', '{{ question.correct_answer }}')">{{ question.option_d }}</button></li>
+            </ul> 
+            <input type="hidden" name="question_{{ question.id }}" id="input{{ question.id }}">
+        </div>
+    {% endfor %}
+{% endfor %}
+
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    function selectAnswer(button, questionId, selectedOption, correctAnswer) {
+        // Disable all buttons for this question
+        const buttons = button.parentElement.querySelectorAll("button");
+        buttons.forEach(btn => btn.disabled = true);
+
+        // Store selected answer
+        document.getElementById(`input${questionId}`).value = selectedOption;
+
+        // Highlight correct/incorrect choice
+        if (selectedOption === correctAnswer) {
+            button.style.backgroundColor = "green";
+            button.style.color = "white";
+        } else {
+            button.style.backgroundColor = "lightcoral";
+            button.style.color = "white";
+        }
+
+        // Show explanation
+        document.getElementById(`explanation${questionId}`).style.display = "block";
+    }
+</script>
+
+</body>
+</html>

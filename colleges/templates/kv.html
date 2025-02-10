@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sree KeralaVarma College,Thrissur</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            background: rgba(44, 62, 80, 0.95);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            padding: 10px 15px;
+            transition: 0.3s ease;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            background: #2980b9;
+            border-radius: 5px;
+        }
+
+        /* Header */
+        header {
+            background: url("https://imgs.search.brave.com/8t0497Xgk8xtQyZATfTOjhiM5FZTkvYLsHoZ4S8Ozqc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jb250/ZW50LmpkbWFnaWNi/b3guY29tL2NvbXAv/dGhyaXNzdXIvODgv/OTk5OXBtdWxibHJz/dGQyMDAwMjg4L2Nh/dGFsb2d1ZS9zcmkt/a2VyYWxhLXZhcm1h/LWNvbGxlZ2UtdGhy/aXNzdXItaG8tdGhy/aXNzdXItY29sbGVn/ZXMtMzh2NnZzNy5q/cGc_dz0zODQwJnE9/NzU") no-repeat center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        header h1, header p {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Main Content */
+        main {
+            width: 80%;
+            margin: 80px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            padding: 30px 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Admission Section */
+        .admission {
+            text-align: center;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 8px;
+        }
+
+        /* Reviews */
+        .student-reviews {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .likes, .dislikes {
+            flex: 1;
+            background: #ecf0f1;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .likes h3 {
+            color: #27ae60;
+        }
+
+        .dislikes h3 {
+            color: #c0392b;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: white;
+            background: #3498db;
+            padding: 12px 25px;
+            border-radius: 5px;
+            margin: 5px;
+            display: inline-block;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            background: #1a5276;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            main {
+                width: 95%;
+                padding: 15px;
+            }
+
+            footer a {
+                display: block;
+                margin: 10px auto;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .student-reviews {
+                flex-direction: column;
+            }
+        }
+        /* Courses Table */
+.courses-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #2c3e50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.apply-btn {
+    text-decoration: none;
+    color: white;
+    background: #27ae60;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.apply-btn:hover {
+    background: #218c53;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#admission">Admission 2024</a></li>
+            <li><a href="#reviews">What Students Say</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Sree KeralaVarma College, Thrissur</h1>
+        <p>Thrissur, Kerala | Estd 1919 | Calicut University, Calicut | NAAC Grade A++ 3.7</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section id="admission" class="admission">
+            <h2>Admission 2024, Courses, Fees, Scholarships</h2>
+            <p>Find detailed information about the admission process, courses, and fees.</p>
+        </section>
+
+        <section id="reviews" class="student-reviews">
+            <h2>What Students Say</h2>
+            <div class="likes">
+                <h3>Likes</h3>
+                <ul>
+                    <li>Hostel establishment charge is ₹7,500, and the monthly fee is ₹4,500...</li>
+                    <li>Many multinational companies conduct campus placements...</li>
+                </ul>
+            </div>
+            <div class="dislikes">
+                <h3>Dislikes</h3>
+                <ul>
+                    <li>The college has a canteen, but it is situated at the top...</li>
+                    <li>Limited parking space...</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+     <!-- Admission Section -->
+<section id="admission" class="admission">
+    <h2>Admission 2024, Courses, Fees, Scholarships</h2>
+    <p>Find detailed information about the admission process, courses, and fees.</p>
+
+    <!-- Courses Table -->
+    <div class="courses-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Total Fees</th>
+                    <th>Eligibility</th>
+                    <th>Application Deadline</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BBA (2 Courses)</td>
+                    <td>₹54,360 - ₹58,200</td>
+                    <td>10+2</td>
+                    <td>10 May 2024</td>
+                    <td><a href="#" class="apply-btn">Apply Now</a></td>
+                </tr>
+                <tr>
+                    <td>B.Voc (2 Courses)</td>
+                    <td>₹40,200</td>
+                    <td>10+2</td>
+                    <td>18 May - 10 Jun 2024</td>
+                    <td><a href="#" class="apply-btn">Apply Now</a></td>
+                </tr>
+                <tr>
+                    <td>M.Com (Financial Management)</td>
+                    <td>₹6,080</td>
+                    <td>Graduation</td>
+                    <td>-</td>
+                    <td><a href="#" class="apply-btn">Check Details</a></td>
+                </tr>
+                <tr>
+                    <td>MA (3 Courses)</td>
+                    <td>₹3,380 - ₹45,600 (1st Year Fees)</td>
+                    <td>Graduation</td>
+                    <td>-</td>
+                    <td><a href="#" class="apply-btn">Check Details</a></td>
+                </tr>
+                <tr>
+                    <td>M.Sc (8 Courses)</td>
+                    <td>₹2,780 - ₹90,000 (1st Year Fees)</td>
+                    <td>Graduation</td>
+                    <td>-</td>
+                    <td><a href="#" class="apply-btn">Check Details</a></td>
+                </tr>
+                <tr>
+                    <td>MSW</td>
+                    <td>₹37,500 (1st Year Fees)</td>
+                    <td>Graduation</td>
+                    <td>-</td>
+                    <td><a href="#" class="apply-btn">Check Details</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+    <footer>
+        <a href="#">Apply Now</a>
+        <a href="#">Download Brochure</a>
+        <a href="#">College Predictor</a>
+    </footer>
+</body>
+</html>
+ 

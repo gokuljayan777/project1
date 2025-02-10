@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+   <style>
+    /* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #121212;  /* Dark Background */
+    color: #ddd;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Results Container */
+.results-container {
+    background: #222;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Heading */
+h2, h3 {
+    color: #ff9800; /* Orange highlight */
+    font-weight: bold;
+}
+
+/* Score List */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: #333;
+    padding: 12px;
+    border-radius: 5px;
+    margin: 10px auto;
+    font-size: 16px;
+    font-weight: bold;
+    border-left: 4px solid #ff9800;
+    transition: transform 0.3s ease;
+    width: 60%;
+}
+
+ul li:hover {
+    transform: scale(1.05);
+}
+
+/* Recommended Course */
+.recommended-course {
+    background: #333;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #ff9800;
+    color: #ffcc80;
+    margin-top: 15px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Back to Home Button */
+.back-home {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff9800, #ff6f00); /* Orange gradient */
+    color: black;
+    font-size: 18px;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(255, 152, 0, 0.3);
+    margin-top: 20px;
+}
+
+.back-home:hover {
+    background: linear-gradient(135deg, #ff6f00, #e65100); /* Darker gradient */
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(255, 152, 0, 0.5);
+}
+
+.back-home:active {
+    transform: scale(0.95);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .results-container {
+        width: 90%;
+    }
+    ul li, .recommended-course {
+        width: 80%;
+    }
+}
+
+   </style>
+</head>
+<body>
+
+    <div class="results-container">
+        <h2>Quiz Results</h2>
+        <p><strong>Your Scores:</strong></p>
+        <ul>
+            <li>Verbal Ability: {{ result.Verbal_score }}</li>
+            <li>Analytical Ability: {{ result.Analytical_score }}</li>
+            <li>Numerical Ability: {{ result.Numerical_score }}</li>
+        </ul>
+
+        <div class="recommended-course">
+            <h3>Recommended Course: {{ result.recommended_course }}</h3>
+            <p>{{ result.course_description }}</p>
+        </div>
+
+        <a href="{% url 'home' %}" class="back-home">Back to Home</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College List</title>
+    <style>
+        /* General Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        /* Table Header */
+        th {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Table Rows */
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Alternate Row Colors */
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        /* Image Styling */
+        td img {
+            width: 80px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* No Image Text */
+        td:contains("No Image") {
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Links */
+        td a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Center Align Certain Columns */
+        td:nth-child(3),
+        td:nth-child(4),
+        td:nth-child(6) {
+            text-align: center;
+        }
+
+        /* Button Styling */
+        .dropdown-btn {
+            background: none;
+            border: none;
+            color: #007bff;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .dropdown-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Dropdown Content */
+        .dropdown-content {
+            display: none;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+
+        .dropdown-content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .dropdown-content ul li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-content ul li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>College List</h2>
+    <div class="college-table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Ranking</th>
+                    <th>Website</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for college in colleges %}
+                <tr>
+                    <td>
+                        {% if college.image %}
+                        <img src="{{ college.image.url }}" alt="{{ college.name }} Logo">
+                        {% else %}
+                        No Image
+                        {% endif %}
+                    </td>
+                    <td>
+                        <button class="dropdown-btn" onclick="toggleDropdown('{{ college.id }}')">
+                            {{ college.name }} ▼
+                        </button>
+                        <div id="dropdown-{{ college.id }}" class="dropdown-content">
+                            <ul>
+                                {% for course in college.courses.all %}
+                                <li>{{ course.name }} ({{ course.duration }} years) - ${{ course.fee }}</li>
+                                {% empty %}
+                                <li>No courses available</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </td>
+                    <td>{{ college.location }}</td>
+                    <td>{{ college.ranking }}</td>
+                    <td><a href="{{ college.website }}" target="_blank">Visit</a></td>
+                    <td>${{ college.fees }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No colleges found.</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<script>
+    function toggleDropdown(collegeId) {
+        var dropdown = document.getElementById("dropdown-" + collegeId);
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+        } else {
+            dropdown.style.display = "block";
+        }
+    }
+</script>
+
+</html>

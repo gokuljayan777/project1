@@ -5,7 +5,7 @@ from django import forms
 class College(models.Model):
     name = models.CharField(max_length=255, unique=True)
     location = models.CharField(max_length=255)
-    ranking = models.IntegerField()
+    nirf_ranking = models.IntegerField()
     website = models.URLField(blank=True, null=True)
     fees = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='college_logos/', blank=True, null=True)  # Store logos in media/college_logos/

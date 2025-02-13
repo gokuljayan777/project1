@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Courses</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; }
+        header { background-color: #0073e6; color: white; padding: 10px; }
+        .search-bar { margin: 20px 0; }
+        .category { display: flex; flex-wrap: wrap; justify-content: center; margin: 20px; }
+        .category button { background: #0073e6; color: white; border: none; padding: 10px; margin: 5px; cursor: pointer; }
+        .category button:hover { background: #005bb5; }
+        .courses { max-width: 800px; margin: auto; display: flex; flex-direction: column; align-items: center; }
+        .course { background: white; padding: 20px; margin: 10px 0; width: 100%; border-radius: 5px; }
+        .course h3 { color: #333; }
+        .course p { color: #555; }
+    </style>
+    <script>
+        function filterCourses(category) {
+            const courses = document.querySelectorAll('.course');
+            courses.forEach(course => {
+                if (course.dataset.category === category || category === 'all') {
+                    course.style.display = 'block';
+                } else {
+                    course.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Explore College Courses</h1>
+</header>
+
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for courses..." onkeyup="searchCourses()">
+</div>
+
+<div class="category">
+    <button onclick="filterCourses('all')">All</button>
+    <button onclick="filterCourses('art')">Art, Humanities & Social Science</button>
+    <button onclick="filterCourses('commerce')">Commerce</button>
+    <button onclick="filterCourses('computer')">Computer Application & IT</button>
+    <button onclick="filterCourses('science')">Science</button>
+    <button onclick="filterCourses('management')">Management & Business Administration</button>
+    <button onclick="filterCourses('engineering')">Engineering & Architecture</button>
+</div>
+
+<div class="courses">
+    {% for course in courses %}
+    <div class="course" data-category="{{ course.category }}">
+        <h3>{{ course.name }}</h3>
+        <p>{{ course.description }}</p>
+        <button>Learn More</button>
+    </div>
+    {% empty %}
+    <p>No courses available.</p>
+    {% endfor %}
+</div>
+
+<script>
+    function searchCourses() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let courses = document.querySelectorAll('.course');
+
+        courses.forEach(course => {
+            let name = course.querySelector("h3").innerText.toLowerCase();
+            if (name.includes(input)) {
+                course.style.display = "block";
+            } else {
+                course.style.display = "none";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

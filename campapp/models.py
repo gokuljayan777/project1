@@ -65,7 +65,7 @@ class QuizResult(models.Model):
         self.save()
         return self.recommended_course
     
-class Course(models.Model):
+class Courses(models.Model):
     college = models.ForeignKey(College, on_delete=models.CASCADE, related_name="courses")
     name = models.CharField(max_length=255)
     duration = models.IntegerField(help_text="Duration in years")

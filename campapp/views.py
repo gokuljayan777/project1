@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django import forms
-
+from django.shortcuts import render
+from campapp.models import Courses  
 from django.contrib.auth.decorators import login_required
 
 
@@ -102,3 +103,7 @@ def quiz_result(request):
     result = QuizResult.objects.get(user=request.user)  # Fetch user's quiz result
 
     return render(request, 'quiz_result.html', {'result': result})
+
+def course_list(request):
+    courses = Courses.objects.all()  # Fetch courses from the database
+    return render(request, 'courses.html', {'courses': courses}) 

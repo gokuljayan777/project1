@@ -10,4 +10,4 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ('text',)  # Add search functionality
     list_filter = ('category',)  # Add filter option by category
 admin.site.register(QuizResult)
-admin.site.register(Course)
+admin.site.register(Courses)

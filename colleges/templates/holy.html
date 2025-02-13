@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grace Academy of Engineering, Thrissur</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center; /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px; /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(239, 236, 236); /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+        
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
+            border-radius: 5px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAA2FBMVEX////Z6/YAcLrK3ujd7Pf///0Aarjh7PKStdTS4euGrtHP3urs9Pbk7fHy+PrO4u6ly+N6tNmWwNmAudzL3++Ivt+SweG+2Om7y9Wyw9Cbx+LG2ebk8vnI4/K33O2RzOx9xOhuwuem1u4/tuaIzOe/c2bysKHVd2qGeJHEU0jtp5zfkoPVwL2oABHqAAC5NhTFg4VIms4if8CHocHKWCncAADMAADbysvYsKjxwLq2QkjTLTZisNtae7ZdlsQ8jMSPdJLmsKfr4+LGeWPeXj1baqfQPg50ocxF+++HAAABtUlEQVRIie3TbXOUMBAH8CUBNsklXOSk0YuHXlufH4Naq3JBrTXf/xuZc26mnU5vSu6t/JkBBvjNLhsAmDJlSnqq+WFM36sXeSK63xwtGvPgIV0umuUiAep5nueZtfMszx8lwexfeJ5FuShS4GrV5tnjJ1l22jYpcLU+Xh+3Jyen7bptRqLi6bPnL1qzNNvouImXr16/GSPfvnv/wZVlScqOxEP38dPnsy9j4PnXb997QrpN7/uBEPfj7Pznr3HdXvwWA+ku3WXvCOkv/lTjWHxNQBcrrjeDK90RJEwVgDmyGfq+61wSi+l9SeJ4HCY6AOfjgNws2W2lP8hBEYb0Pnf0QDcqVsaf3WxXGpm8dl3vqqK8TcUMWtea1crAQOPHzZgKyCwgmRmBwmrPGddMWK5vQsZECKbjVdwFrUPg2gcQPnjpMYQ6ngWmmWc3oFYzVlvZxX4jKQTDwIUFVtVG8GDqbVlj+cyrWxvG3fz3jrMw++6AKjQYJWWlVKUACwSpFMh9s7mqKSmP0HKqjEVNNTVo0KK5a00rGtu1qJBbi1XkVEkKSO+EVy3z64/yQz++KVP+w/wFAtAowH6pVOkAAAAASUVORK5CYII=" alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">Holy Grace Academy of Engineering, Thrissur</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('review')">Review</button>
+        <button onclick="showContent('info')">Info</button>
+        <button onclick="showContent('course')">Course</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="review">
+        <!-- What Students Say Box -->
+        <div class="what-students-say">
+            <h3>What Students Say</h3>
+            <div class="feedback-box">
+                <!-- Like Box -->
+                <div class="box like-box">
+                    <h3>Like <span class="emoji like">👍</span></h3>
+                    <ul>
+                        <li>The campus is well-maintained with a great auditorium.</li>
+                        <li>Faculty members are approachable and supportive.</li>
+                        <li>Great job opportunities provided by the college.</li>
+                        <li>Presence of expert faculty like Joseph Mundaserry and Nk Sheshan.</li>
+                    </ul>
+                </div>
+                <div class="box dislike-box">
+                    <h3>Dislike <span class="emoji dislike">👎</span></h3>
+                    <ul>
+                        <li>The campus area is smaller compared to some other colleges.</li>
+                        <li>The management is quite strict about discipline activities.</li>
+                        <li>Lack of adequate parking space on campus.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    <div class="content" id="info" style="display: none;">
+        <h2>About Holy Grace Academy of Engineering</h2>
+        <p>Holy Grace Academy of Engineering for Women operates under the benefaction of Holy Grace Foundation. The most important mission of the academy is the exposure of future engineers and scientists to scientific methods of problem evaluation, simulation, modeling, and identification. Empowering women in various professional courses is what the academy aims to achieve. Apart from this, developing students with integrated and disciplined personalities and achieving academic excellence also form the main goals of the academy.</p>
+        <h3>Facts and Figures</h3>
+        <ul>
+            <li>Year of Establishment: 2010</li>
+            <li>Approval: All India Council for Technical Education (AICTE)</li>
+            <li>Campus Strength: 240</li>
+            <li>Total Faculty Members: 50</li>
+            <li>How to Reach: 2.5 km away from Mala Town</li>
+        </ul>
+        <h3>Why Choose Holy Grace Academy of Engineering for Women?</h3>
+        <ul>
+            <li>Foreign Study Trips Completely Free of Cost: Students get the option of visiting international trade fairs at no cost.</li>
+            <li>Management Seats for Disqualified Students: Students who get disqualified in entrance exams can avail management seats.</li>
+            <li>Exclusive Add-On Courses: The institute offers add-on courses, including SAP, across various branches.</li>
+            <li>Reputable Faculty: Faculties from IITs, foreign universities, and even former HODs.</li>
+            <li>Soft Skill and Communicative English Training: Training is provided to develop soft skills and communication skills.</li>
+            <li>Top Placements: Regular PDPs, training sessions, expert lectures, and industrial visits are conducted by the Placement and Career Guidance Cell.</li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+    </div>
+    
+
+    <div class="content" id="course" style="display: none;">
+        <div class="courses-fees-box">
+            <h3>Courses and Fees</h3>
+        <h2>Courses and Fees</h2>
+        <h3>B.Tech Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                    <th>Cutoff (Rank)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Computer Science and Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>47782 (KEAM)</td>
+                </tr>
+                <tr>
+                    <td>Mechanical Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Civil Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Artificial Intelligence & Data Science</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Cyber Security</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Electronics & Communication Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Electrical And Electronics Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Data Sciences</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Civil & Environmental Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>B.Tech Lateral Entry Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Computer Science & Engineering</td>
+                    <td>₹4,01,500 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Mechanical Engineering</td>
+                    <td>₹4,01,500 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Civil Engineering</td>
+                    <td>₹4,01,500 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Electronics & Communication Engineering</td>
+                    <td>₹4,01,500 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Electrical and Electronics Engineering</td>
+                    <td>₹4,01,500 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Diploma and Certification Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Digital Marketing</td>
+                    <td>₹40,000 (Total Fees)</td>
+                </tr>
+                <tr>
+                    <td>Security Analysis</td>
+                    <td>₹40,000 (Total Fees)</td>
+                </tr>
+                <tr>
+                    <td>E-Commerce</td>
+                    <td>₹40,000 (Total Fees)</td>
+                </tr>
+                <tr>
+                    <td>Financial Analysis</td>
+                    <td>₹40,000 (Total Fees)</td>
+                </tr>
+                <tr>
+                    <td>Communication</td>
+                    <td>₹2,500 (Total Fees)</td>
+                </tr>
+                <!-- Add more courses as necessary -->
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <script>
+        function showContent(contentId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+
+            const tabs = document.querySelectorAll('.tabs button');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tabs button[onclick="showContent('${contentId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

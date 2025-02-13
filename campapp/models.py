@@ -12,6 +12,8 @@ class College(models.Model):
 
     def __str__(self):
         return self.name
+    
+    
 
 
 class Question(models.Model):

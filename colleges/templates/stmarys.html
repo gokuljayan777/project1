@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Mary's College (Autonomous) (Rating 4.0)</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg');
+            /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px;
+            /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(248, 242, 242);
+            /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
+            border-radius: 5px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="data:image/jpeg;base64,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"
+            alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">St. Mary's College (Autonomous) (Rating 4.0)</span>
+    </div>
+
+    <!-- Rating Stars -->
+    <div class="rating">
+        ★★★★☆ 4.0
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('about')">About</button>
+        <button onclick="showContent('courses')">Courses & Fees</button>
+        <button onclick="showContent('admissions')">Admissions</button>
+        <button onclick="showContent('scholarships')">Scholarships</button>
+        <button onclick="showContent('facilities')">Facilities</button>
+        <button onclick="showContent('faculty')">Faculty</button>
+        <button onclick="showContent('reviews')">Reviews</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="about">
+        <h2>About St. Mary's College</h2>
+        <p><strong>Written By:</strong> Collegedunia Team</p>
+        <p>St. Mary's College is the First Women's College of Thrissur District set up by The Congregation of Mother of
+            Carmel (CMC). The National Institutional Ranking Framework (NIRF) ranked St. Mary’s College at 55 for the
+            year 2017. The women’s college offers various Undergraduate, Postgraduate, Vocational and Certificate
+            programs. The courses offered include BA, B.Sc., BCA, B.Com, BBA, BSW and BVOC at the Undergraduate level
+            and MA, M.Sc., and M.Com. programs at the postgraduate level. The selection procedure is entirely
+            merit-based. The application mode for the admission is both online as well as offline.</p>
+        <p>St. Mary's College was established in 1946 and is affiliated with Calicut University. It offers a wide range
+            of programs across arts, science, and commerce disciplines. The college provides a strong academic
+            foundation and offers numerous facilities to help students excel in their studies and extra-curricular
+            activities.</p>
+    </div>
+
+    <div class="content" id="courses" style="display: none;">
+        <h2>St. Mary's College Courses</h2>
+        <h3>Undergraduate Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Specializations</th>
+                    <th>Duration</th>
+                    <th>Eligibility</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>B.Sc</td>
+                    <td>Microbiology, Biotechnology, Mathematics, Botany, Chemistry</td>
+                    <td>3 years</td>
+                    <td>10+2 with Biology, Chemistry, Mathematics/ Computer Science</td>
+                    <td>₹1,21,200 (Total Fees)</td>
+                </tr>
+                <tr>
+                    <td>BA</td>
+                    <td>History, Economics, English</td>
+                    <td>3 years</td>
+                    <td>10+2 with Arts</td>
+                    <td>₹54,000 (Total Fees)</td>
+                </tr>
+                <tr>
+                    <td>B.Com</td>
+                    <td>-</td>
+                    <td>3 years</td>
+                    <td>10+2 with Commerce</td>
+                    <td>₹54,000 (Total Fees)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Postgraduate Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Specializations</th>
+                    <th>Duration</th>
+                    <th>Eligibility</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>M.Sc</td>
+                    <td>Mathematics, Microbiology, Biotechnology, Psychology, Chemistry</td>
+                    <td>2 years</td>
+                    <td>Bachelor’s Degree</td>
+                    <td>₹3,415 (1st Year Fees)</td>
+                </tr>
+                <tr>
+                    <td>MA</td>
+                    <td>History, Economics</td>
+                    <td>2 years</td>
+                    <td>Bachelor’s Degree</td>
+                    <td>₹3,415 (1st Year Fees)</td>
+                </tr>
+                <tr>
+                    <td>M.Com</td>
+                    <td>Commerce</td>
+                    <td>2 years</td>
+                    <td>B.Com, BBS, BBA, BBM</td>
+                    <td>₹3,415 (1st Year Fees)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content" id="admissions" style="display: none;">
+        <h2>St. Mary's College Admissions</h2>
+        <p>Admission to St. Mary’s College is merit-based. The University of Calicut follows a Centralized Admission
+            Process (CAP) for undergraduate admissions. Interested candidates must fill out the online application form
+            and follow the necessary steps as outlined by the college.</p>
+        <h3>How to Apply?</h3>
+        <ol>
+            <li>Visit the official website of the College</li>
+            <li>Download and fill out the application form</li>
+            <li>Make the payment via online or offline through challan generation</li>
+            <li>Merit list will be published after submission</li>
+            <li>Attend the interview with the necessary documents (Mark Sheets, Transfer Certificate, etc.)</li>
+        </ol>
+    </div>
+
+    <div class="content" id="scholarships" style="display: none;">
+        <h2>St. Mary's College Scholarships</h2>
+        <p>The college offers various scholarships and financial assistance to students based on merit and need. Some of
+            the scholarships available include:</p>
+        <ul>
+            <li>Post Matric Scholarship For Minorities (PMS)</li>
+            <li>Central Sector Scholarship (CSS)</li>
+            <li>State Merit Scholarship (SMS)</li>
+            <li>District Merit Scholarship (DMS)</li>
+            <li>Suvarna Jubilee Merit Scholarship (SJMS)</li>
+            <li>Music Fine Arts Scholarship (MFAS)</li>
+            <li>Post-Graduate Indira Gandhi Scholarship for Single Girl Child</li>
+        </ul>
+    </div>
+
+    <div class="content" id="facilities" style="display: none;">
+        <h2>St. Mary's College Facilities</h2>
+        <p>St. Mary’s College offers a variety of facilities to students to support their academic and extracurricular
+            growth. These include:</p>
+        <ul>
+            <li>Well-equipped laboratories</li>
+            <li>Sports facilities</li>
+            <li>Hostel accommodations</li>
+            <li>Library with online resources</li>
+            <li>Wifi-enabled campus</li>
+            <li>Health services</li>
+            <li>Recreation and Cultural Centers</li>
+        </ul>
+    </div>
+
+    <div class="content" id="faculty" style="display: none;">
+        <h2>St. Mary's College Faculty</h2>
+        <p>The college has a well-qualified and dedicated faculty who ensure a strong learning experience for the
+            students. The faculty members are experts in their respective fields and help students achieve their
+            academic goals.</p>
+    </div>
+
+    
+
+    <div class="content" id="reviews">
+        <!-- What Students Say Box -->
+        <div class="what-students-say">
+            <h3>What Students Say</h3>
+            <div class="feedback-box">
+                <!-- Like Box -->
+                <div class="box like-box">
+                    <h3>Like <span class="emoji like">👍</span></h3>
+                    <p>What students have to say about St. Mary's College:</p>
+                    <ul>
+                        <li>
+                            <p><strong>Anna, B.Sc. Biology</strong></p>
+                            <p>“The college environment is very friendly, and the faculty is very supportive. I had a
+                                great time here.”</p>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="box like-box">
+                    <h3>Dislike <span class="emoji dislike">👎</span></h3>
+                    <ul>
+                        <li>
+                            <p><strong>Maria, M.Sc. Chemistry</strong></p>
+                            <p>“The campus is equipped with excellent facilities, and the academic approach is very
+                                rigorous.”</p>
+                            <span class="emoji like">👍</span><span class="emoji dislike">👎</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showContent(contentId) {
+            var sections = document.querySelectorAll('.content');
+            sections.forEach(function (section) {
+                section.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

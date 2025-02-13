@@ -64,6 +64,7 @@ def college_list(request):
     colleges = College.objects.all()  # Fetch all colleges
     return render(request, 'college_list.html', {'colleges': colleges})
 
+
 def course(request):
     return render(request, 'course.html')
 
@@ -102,3 +103,6 @@ def quiz_result(request):
     result = QuizResult.objects.get(user=request.user)  # Fetch user's quiz result
 
     return render(request, 'quiz_result.html', {'result': result})
+def stc(request):
+    return render(request, 'stc.html')
+

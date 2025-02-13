@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidya Academy of Science and Technology (VAST) (Rating 4.0)</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center; /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px; /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(255, 255, 255); /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+        
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
+            border-radius: 5px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="data:image/jpeg;base64,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" alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">Vidya Academy of Science and Technology (VAST) (Rating 4.0)</span>
+    </div>
+
+    <!-- Rating Stars -->
+    <div class="rating">
+        ★★★★☆ 4.0
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('about')">About</button>
+        <button onclick="showContent('courses')">Courses & Fees</button>
+        <button onclick="showContent('admissions')">Admissions</button>
+        <button onclick="showContent('reviews')">Reviews</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="about">
+        <h2>About Vidya Academy of Science and Technology (VAST)</h2>
+        <p>Vidya Academy of Science and Technology (VAST) is located in Kerala, India, and is approved by the All India Council for Technical Education (AICTE). The college is affiliated with APJ Abdul Kalam Technological University and is part of the Vidya International Charitable Trust.</p>
+        <p>VAST offers B.Tech as an undergraduate program and M.Tech and MCA as post-graduate courses. The institution provides a fee waiver option and admits students based on entrance exams. The application fee is INR 500/-.</p>
+
+        <h3>Facts and Figures:</h3>
+        <ul>
+            <li>Established: 2003</li>
+            <li>Affiliated to: APJ Abdul Kalam Technological University</li>
+            <li>Accreditation: AICTE approved</li>
+            <li>Courses Offered: B.Tech, M.Tech, MCA</li>
+            <li>Facilities: Library, hostel, labs, auditorium</li>
+            <li>Location: Thrissur, Kerala</li>
+        </ul>
+    </div>
+
+    <div class="content" id="courses" style="display: none;">
+        <h2 style="text-align: center;">Courses & Fees</h2><br><br>
+        <h3>B.Tech Courses</h3><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                    <th>Cutoff (Rank)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mechanical Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Computer Science and Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>51715 (KEAM)</td>
+                </tr>
+                <tr>
+                    <td>Civil Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>49963 (KEAM)</td>
+                </tr>
+                <tr>
+                    <td>Electrical and Electronics Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>52137 (KEAM)</td>
+                </tr>
+                <tr>
+                    <td>Electronics & Communication Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>51116 (KEAM)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>M.Tech Courses</h3><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Embedded Systems</td>
+                    <td>₹1,26,831 (1st Year Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Computer Science and Engineering</td>
+                    <td>₹1,26,831 (1st Year Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Power Electronics</td>
+                    <td>₹1,26,831 (1st Year Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Structural Engineering</td>
+                    <td>₹1,26,831 (1st Year Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>MCA Courses</h3><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MCA</td>
+                    <td>₹66,431 (1st Year Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content" id="admissions" style="display: none;">
+        <h2>Admissions</h2>
+        <p>Admissions to B.Tech are based on the Kerala Engineering Architecture Medical (KEAM) exam. For lateral B.Tech admissions, candidates must appear in the Lateral Entry Test (LET). M.Tech admissions are based on GATE exam scores, and MCA admissions are determined through the MCA Entrance Exam of Kerala.</p>
+        <p>The application process includes filling out the online form, paying the application fee of INR 500/-, and submitting the necessary documents. Selected candidates will be called for document verification.</p>
+    </div>
+
+    <div class="content" id="reviews">
+        <!-- What Students Say Box -->
+        <div class="what-students-say">
+            <h3>What Students Say</h3>
+            <div class="feedback-box">
+                <!-- Like Box -->
+                <div class="box like-box">
+                    <h3>Like <span class="emoji like">👍</span></h3>
+        <p>Vidya Academy of Science and Technology offers a conducive learning environment. The faculty are experienced and approachable, guiding students through various academic challenges. The infrastructure is equipped with modern facilities such as labs, a library, and online learning systems.</p>
+
+        <h3>Positive Remarks</h3>
+        <p>The campus has a vibrant atmosphere with several student clubs and extracurricular activities. The placements are good, and the institute offers excellent training programs to enhance employability.</p>
+    </div>
+            </div></div></div>
+
+    <script>
+        function showContent(contentId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+
+            const tabs = document.querySelectorAll('.tabs button');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tabs button[onclick="showContent('${contentId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

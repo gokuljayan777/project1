@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sree Narayana College Nattika (Rating 4.0)</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center; /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px; /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: black; /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+        
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
+            border-radius: 5px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="data:image/jpeg;base64,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" alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">Sree Narayana College Nattika (Rating 4.0)</span>
+    </div>
+
+    <!-- Rating Stars -->
+    <div class="rating">
+        ★★★★☆ 4.0
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('about')">About</button>
+        <button onclick="showContent('courses')">Courses & Fees</button>
+        <button onclick="showContent('admissions')">Admissions</button>
+        <button onclick="showContent('scholarships')">Scholarships</button>
+        <button onclick="showContent('facilities')">Facilities</button>
+        <button onclick="showContent('faculty')">Faculty</button>
+        <button onclick="showContent('reviews')">Reviews</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="about">
+        <h2>About Sree Narayana College Nattika</h2>
+        <p><strong>Written By:</strong> Sapna Malik</p>
+        <p>Sree Narayana College Nattika was established in 1967 and is affiliated with the University of Calicut. The College was accredited by NAAC and offers UG, PG, and PhD programmes in numerous specializations. It also offers Diploma and Certification programmes. The College was placed in the 150-200 rank band in the NIRF rankings of 2020, and it was ranked #151 among the top colleges in India.</p>
+        <p>Admissions in UG and PG Programmes in all affiliated colleges (including Sree Narayana College) are done through the Single Window System (SWS) implemented by the University of Calicut. Students wishing to apply must fill out the online application form through the official university website.</p>
+    </div>
+
+    <div class="content" id="courses" style="display: none;">
+        <h2 style="text-align: center;">Sree Narayana College Courses</h2>
+        <h3>Undergraduate Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Specializations</th>
+                    <th>Duration</th>
+                    <th>Eligibility</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>B.Sc</td>
+                    <td>Botany, Chemistry, Mathematics, Physics, Zoology</td>
+                    <td>3 years</td>
+                    <td>Passed 10+2</td>
+                    <td>₹71,700 (Total Fees)</td>
+                </tr>
+                <tr>
+                    <td>BA</td>
+                    <td>Economics, Malayalam</td>
+                    <td>3 years</td>
+                    <td>Passed 10+2</td>
+                    <td>₹54,000 (Total Fees)</td>
+                </tr>
+                <tr>
+                    <td>B.Com</td>
+                    <td>-</td>
+                    <td>3 years</td>
+                    <td>Passed 10+2</td>
+                    <td>₹58,200 (Total Fees)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Postgraduate Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Specializations</th>
+                    <th>Duration</th>
+                    <th>Eligibility</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>M.Sc</td>
+                    <td>Botany, Chemistry, Mathematics, Physics, Zoology</td>
+                    <td>2 years</td>
+                    <td>Bachelor’s Degree</td>
+                    <td>₹4,340 (1st Year Fees)</td>
+                </tr>
+                <tr>
+                    <td>MA</td>
+                    <td>Economics, Malayalam</td>
+                    <td>2 years</td>
+                    <td>Bachelor’s Degree</td>
+                    <td>₹3,140 (1st Year Fees)</td>
+                </tr>
+                <tr>
+                    <td>M.Com</td>
+                    <td>Commerce</td>
+                    <td>2 years</td>
+                    <td>Graduate Degree</td>
+                    <td>₹3,140 (1st Year Fees)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Ph.D. Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Specializations</th>
+                    <th>Duration</th>
+                    <th>Eligibility</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ph.D.</td>
+                    <td>Botany</td>
+                    <td>3 years</td>
+                    <td>Post Graduate Degree</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content" id="admissions" style="display: none;">
+        <h2>Sree Narayana College Admissions</h2>
+        <p>Admissions to all courses at Sree Narayana College are conducted through the Common Admission Programme of the University of Calicut. Candidates can apply online through the official University website:</p>
+        <ul>
+            <li><a href="https://www.universityofcalicut.info">www.universityofcalicut.info</a></li>
+            <li><a href="https://www.cuonline.ac.in">www.cuonline.ac.in</a></li>
+        </ul>
+        <p>After filling out the form online and uploading the required documents, candidates must submit the form and take a printout for future reference.</p>
+    </div>
+
+    <div class="content" id="scholarships" style="display: none;">
+        <h2>Sree Narayana College Scholarships</h2>
+        <p>The College offers various scholarships such as:</p>
+        <ul>
+            <li><strong>Suvarna Jubilee Merit Scholarship (SJMS):</strong> For UG and PG students from BPL families with a minimum of 50% marks in the qualifying exam.</li>
+            <li><strong>Post Metric Scholarship (PMS):</strong> For Muslim and Latin converted Christian communities.</li>
+            <li><strong>State Merit Scholarship:</strong> For students with 50% or above in the qualifying examination and annual family income below 1 Lac.</li>
+        </ul>
+    </div>
+
+    <div class="content" id="facilities" style="display: none;">
+        <h2>Sree Narayana College Facilities</h2>
+        <ul>
+            <li><strong>Library:</strong> A 6000 sq. ft. building with over 46,000 books and journals.</li>
+            <li><strong>Computer Centre:</strong> 120+ computers with high-speed LAN and eight mini-computer labs.</li>
+            <li><strong>Hostel:</strong> Accommodates 75 girls students with a peaceful environment.</li>
+            <li><strong>Fitness Centre:</strong> Equipped with basic fitness equipment and playfields.</li>
+            <li><strong>Canteen:</strong> Provides vegetarian and non-vegetarian food at reasonable prices.</li>
+            <li><strong>Capability Enhancement Centre:</strong> Language labs, remedial coaching, career counselling, etc.</li>
+        </ul>
+    </div>
+
+    <div class="content" id="faculty" style="display: none;">
+        <h2>Sree Narayana College Faculty</h2>
+        <p>The College has over 60 dedicated and highly knowledgeable teaching staff members, including Associate and Assistant Professors with over three years of teaching experience.</p>
+    </div>
+
+    <div class="content" id="reviews" style="display: none;">
+        <h2>Reviews</h2>
+        <p>Students appreciate the library, campus, and the quality of teaching. However, some students have expressed concerns about exams, departmental restrictions, and certain aspects of the college environment.</p>
+    </div>
+
+    <script>
+        function showContent(contentId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+
+            const tabs = document.querySelectorAll('.tabs button');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tabs button[onclick="showContent('${contentId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

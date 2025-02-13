@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vimala College (Autonomous) (Rating 4.0)</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center; /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px; /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(255, 255, 255); /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+        
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
+            border-radius: 5px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAk1BMVEX///9kIiNiHh9XAABhGhtvNDWDWlpYAACZeHhdERJrKitaAABVAABTAABhHB37+flMAAD18fHSxMT39PTw6+tdDxC6pKTe09PMu7vl3NzVyMjp4uJfFhjGtLS0nJxJAACtkpJ5SUmig4N0PT6OZmfHtbWBUlO+qamni4txODmWc3OKYWJ4REWEV1hEAACefX08AADWTmExAAAczElEQVR4nO1dC5uqug4tFEQsyFveiIiCoOP5/7/uJEUUH/Pa2xnH/c269+wRVGxompWkaSHkF7/4xS9+8Ytf/OIXv/jFL37xI+E/ugFfDVd+dAu+GrkZProJXwxpOn50E74MrgP/BIpvGv3Bv4ZQl9e1XBOhbBbC9tGtuT+g4yJztspdYmdRKRkkeHSL7gxrlxNSKQY/sPWYxPP6sS26L1JCFhn83S/xKH6JoE/tkATFvzIas/+iw6s1GFLDqw5HhfCoFt0bbtT3VbAGhTX7845B3Ac16b5YnV7WOfwzPXF+pK2uPv588P872ZQRWtAyPR6742f3cLh2RidVZDGJSNZLbJ39eU6ES+QHa293h4ZukJLY6+6onPAb4D+1Lx7qUgx/NKAKA2QNZRImxPWI0xZAj7wvK/25JaQTPeqkaxcGSRsQyCW6RdpeU2tzMnloE/8SvmYU885cZjmIMyNNY5Plybw088j2HtS4uyCC7qpfeoYna59M/ILsj8a0NX2SMuMxjbsLbBPsaDHvRfQcd0e2pCoOxzsTVHjGntl3W5mYlmnMrtMsRoKayMQ/GNPWRHrM6TPTRaVznthxUVCywialbyT8zcbkfdvQZ3bdZnrXe0sdjUtak61LZjMioF5mZmdPd9ozS5jqkxn+dZkA5qQIiAQ9WZKRj/Fwi+9YY097Zi0lFdMmOBR9swRTGvs78OQYyVPiKJzoK12T4we38S9hlbqG3Tib20QgsxxeCm5QwCAEwYxSZ9mDG3gH2FMT2aGdkA0p0fA0gbt2X2CAOhtz/cxj8ISxXmJoXzeEoUBAh5N9A4NTYP9CdIgIFBTRf8kt7qCB/z2ZQngvUO+ZuX6Iql2ZYzClbMbNJ6GzuU+MiRfr/4aOgpUpycTMCZG5zSFkqxVIkQWZ/ysSZg1RffDcfLOLhBsBDM823ZOXf0bCPWHEn4ek2eGhA8RRy8j85r8ymbiuDRVYQ3EIn1qrW2LrBvFbwpaPbtp9UOm5M8GMxg5sDiZrLJeBQxOviaTMHt24e8BiXmZtQVBNy4gQY6ptqygusRZkIj515NRjl3gzCHxJk4/nIQw+kRSmLQbE2JDNNGkf3by/h00FbxYD4ydxWQgwJlN/vQjymhgy2U4F5eln2QxRFLwqHBOXEmpU41AhzEnH4QLokewkQXz62ZmxJ4D76RfEbmIwN2U7WQQkZgT8tw1pPRC/eP8iPxkRFQCBnZPcrsbEGCU7Heyn4pQhWZKymAqC9txTF6CFrNraqxlZG+XK38Koc/KRs7NXFVmQppoxYfrUc/qFJ0hAClG6IjvCdFPBqHCvm7R2GpB5nIE5FdgTk6IPOqrFZOpXdpy5ZubU5rTUPdsdbcialNa+xo+I7Hnd06UkKDkhaphFVbjC4NDJNJzx9k2jNsq4ACuz94TnJcWMCRJ6nizOdzIZc6MZdXkZFoULIcxxWn8qCtqTkmKsCYIC0YOhxLW2JwnaTEPs5tKA8Sn1IawiJAA9FZ5z6mItdWRnaO5eD1xO7WPP43ngWCal5kNoTNCte1JSrJSDw+Lo1owZGabwI63nv4WbsrDqksLsOUnRVUTQ0TQ1iGVaxpLIoIhGIibSlAeFQW1NSAUOuTvzKyDFJ4wUQffUos1LDwtoqlmEejhWk6ZMOv4TydIN1iR8SeV08YykuAL7Iac7g6XE1WrTmFgYZoiqY7GO/9I8ksYYVO0MD327ZyNFJxEFGi1cFqFvqvszsC+GINIAZ0STEX5EcGtThL/jPKuK5yPFRsUmU6JYJJ6Kbsj4uYTbzq1EMdftT0mK8zVVHZVEghtiP7bJn4OtCaJnEWZlomyCa8ZiPCd2M/bh4UUlE3dtLlg825MADO9TVSxAl6CTnS2I4xowJmMeCtOD61J7KlI9qWDsufB/fHv0XKQIvqbE5+rHchVVix322NjrdBQBA5LXY/rSGEJHPhPuogP0NKSIIcVhcj7atzVvN+ioepyHiah4KBOy923epdtmByf2KSBf05uhHnUUUSbXKrl8HlLMqSBdxu1gR4ds4FBRv1RJ3vNPkT6NdaDvi7l5zvXDE6ly7ac9TaS4lQSan5+CGJBehIBr6WoG3/DAAj8BKWJu6bLasOf6AWJ6nbx4jkjRVWA0+eSsnUeuHyKn0rp/7TfLRQ7yts9Aioewt9kWaXgYec61jiImIj3UKOa6qtDEDLCwSLiyQD8M6UHRHMYoVZf7KnNv6SjC7xky0hMpdYi1DjGz88PTpxAaCTyZRmbNTkioomeoo8nNmoux2jlvLRt1J5qbVPqzUELY23Qvx3Bk10u0kLd0lPAIiztvct9rtfHj06doDHvesyNQUDe85PohUipO4c+oLxlu9s4PJ0UDdPTUXyWvHg0uuX6INXfeVge1jNfxT0+fdmFvj3hGHOJIr+kowmUiMAvZdVTSKedPJsXowrGsC5+UF3a0ys++kjGMJ6yWV5046Qw9mh+cPp2A01UNjmMI3S+5vrhY57yccuctrZAVGTX1iJPiz0yfFjzsNTqfm69mvqGjRXP+JV/vI8maJqyIwn3I/b7Nd7T4kwg1HlLk3ZHB++qa6/cXEoLtlHihlKsrJdfw/Y+NFHGqMyOh2XRaGckO6ugl148vvRtDFDGjQ1L9EGrkPng7PzF9mitctRbUEzqzwYxbXM8ltIejFejEg86rejdcSLtI8Zaj90jECjcPIbE9j0eHaYR2dMjdBegfafCMPpQQAgqUJs75gbPmK8F+YPp0CSFFt3zCaSnbusb+iusbHYxQgyng5OyrFhU0mzulmF9MGK7L/HnpUzR/8ulAVbcGep1nOuroIEQJ/yVpRw+nz4sTg1iLei+wBD3V6uelT8E3EfRTrWgs6/YV14MkZkx2Y7KCXormw0TOVkJpnMbU9REQYbjJflz6FN2QMyovL7m+RPnlkoQhEVYkfImGnw4VQeP3B+2nM9Y9uBXZj0qfppeuZOxc6mj6soKee4FeiTfE0kAPjaF/5x11vAJLNQrTn0WKPKS4sHylqp7raPWSgyR8fYWRgE2KpeEwk0QF6DB0/Q1jQnepn5Q+PYS9k11u96PrBtfP5r3IASh0NT9zbsBpV+C7pe4pxxzjz4kUbQzLHXQxFapJo3qVEUM511G9gffzl6PSGeW8Or9ImWDmzfHKU6/9mPSpAWOwS5o1+yX1KJuDHU3Us7u/ogwEDhwMlPB4McXOHo5ci3HnLR0Y5C5S/AYJ3sMYlKnLJLkZsYoVMB5w/YWOGs1Ly3sn/A//dUhYNexlaEgqRaDOgfe7E9YPSZ+Cl3xMHeVWYRD/yo5y2Ap3PIM5P5gLbRadm5GthPzplq7L+3GVND8kfXqW/lvyxrUXXB93rji/DRWX0LiRuYkpN8jZHJPfIXjw8+hHpE9rD2fS+hEVROhT0ou4vmLzbX4YYIWJPRcWwXXX5FQUDT46nUb3WE3sn5A+DSkPe487CJS15ajXOhpXraajaIZUY4PdUjb1ZTM770p56kH4EdszIP22453Hp08h7FVyMtv2fZamaEdvhna802YjwvrjIG/OzUikc+ct1+nk6NQ9mhQznlFxdVU5NCm+YUc53ID3M4RJa1A+16xvdUyj8vyMnJ9O4WKGB6ZP4y4rZm2XHj3sVeKwax2NijV78TApakMHptgltWmW1+vWwAijS+Of9iAKH5w+7QtIU7/RlCUfOZdcjyhG2WGboRLHGd9V0JotXzZXq4DBhcf58f1Ropn10PQpFpB2s71jkjKVzjJwXl7N4YNHY1AfogbQVG5J3WoUXX5ol/Aah2Vgc0XI9PKR6VMLZ3u7NoYVcReU3rSjHVK2cEk8J8GOLIEH5unNTxGX8qSyvcGrBBMFA43sYenTlocUq3LmGyR3+BZeXVLpGoG0wVFnb0hmkhbXdZuXedMDMoVn3gDxjiYsRTfuUZEiFpB64DErlOryGBoSoI7e3E1nucGuLjN7R0rTKEa+D9ZJub1ZxHLKM29pAYEUKqzVdLnm7ydFXkAakELOGlmjCmZprNfmQrks7Qj4m1T/kbzwcceI7Lam+gfnTVd2btWAKzT3H5Q+xZm0kliGMQa6sLNWIK9yPccaHW8aE4uUKxKgg+MO6mlC/9j3e09U4c8k7WZMq9p4TPo06gpIEXw3D4Jqe+L6KPDP1XW7wCnTaG2AzYHDYLhzkpEz0PQjI3giOm9gdH1ucfEUpk/VrxLlNozhTFrcuDgXysTe+TBajVFcDnT8uLyEO7HAtcASdSfQantyFNERIJgXBKVP6wPH47RpPRyn358+7dakHQO8uuZ2tOf6pQctFpWTysZjiBvn8PG9pguG7+HmdKfZcFXgoL0D0CacHaZ1FhK33m738fenT7vJIedkVlqsOuh1tPG6JutnfhnDmmEzcDIN/JnBeVxPwiH1NwjnvnP4kcwhtuYpVNSzb68+nXCGakb9WDPcgR119UOTvWFpXo6zhAwVO5DIeHR6w1HE7uPicToDxNG4jlqaxHK0u8E3k2JXQGrPPfHYS6MT11f0IKE63CkYZIsDbT+zY2tukGpAb32XC+x4ajOFMcAvtew+2Hxv+jTk6yaNIJp6Wt6dSgdcn/ctPpvUt1vTNJmmm6bujWp72NZ19wXxVNEIv8C7O++jiiD61kjxWEDqlDiRRoxzrj9ISLWTM2lkzFzkK9u2g1WVlxtd1xfViU5ybmuGpF57ogI3Iev1PBhbBNOn3xMpDmfSKqp6GdrRAdd3WkoHmZhK0bMzr8tK17om9T5NynRNU8+HLYxK6LAwJ90mvTsgpG9Ln6LhpsfxFy8VeWhHSbewEkdVfugkn+++c4m4STScFI5zxgJQg0ylQzYAjwK1YowegkUwwRh+W/p0B2Hvnpzm0tahw84TDfK0M6VqhjLW5vKmj73yQNfrjabh4LIqWTqPkMoEM29Gu1Zo5wp8W6SYKmjWfXb8pTOu784cGE701MLmOyZdwZlN9FYUVJVv/eE0jIr0nAsshTtv7kTPIRSBWEqrvyd9Cj+MYW84SL+nV7mnQyeCjCqbSqvLwMdKd6KpNbjvBw+LUn0twe24iLsqxjNvBn7bgFiKrf1vWbzf9gWkfu9j3YiZ7J4RO6NKl/vUdy3HcCzXT/cbTELhcieFezKjcucScEWv9t5bSJw/HCxt8Lxd2JHiV6dPcSbNM7iGHndZvRHX789EFERgQVNJJMmj+nxTdR1ubHhPK5OIBBPxhpWMdaFz3raKMsG76mdfT4pGF/a2fL69u+npzbh+rZ7kmzKdhFGQq+JUUYt+/PqShO9h9jAyxT7hcwZwndC+FgrLyX5Xx+5/1pdXn44h7N2RXKM4dVSgX+K+Etdvk96fplu7K/z2FPnI8saYojeayChwmbzSMTJ33gzUS9wypLC/vPo0wmFgheVSowCGmjN6Ja435OQQMPh83EQTc3mM0o1K5H5PssG27sBTv520ibrMG7hs/KtcsK9Nn4pi5y5iBL5fqvMI/JdX6vCJM0EtlJKucr+Zy0f5qoXZeKDuwhQ7wxWSwPPy2z/YqAJu39oMjMuXkmLdr5vs4PiRo7w+KiwQUWqbNkejoh8tZTiZj8COloIoYno71HYkUqRXrmEw7rxZrDx5fdnXLd4Pwbrr59o0eiU/yuFKU69zPRcnhyw1pa4zZxRL9CJ8Fkupv2o7Usqdt2gYS39dpNgVkA5RKa/pKIebSPhgGVc+PcRqz/e99ovJi4CzTyvcr901d69fY5eIyYVh+bL0aaZc5hFc5a06fPyA6JWgg/pxBmaPs/JO+zLpVs5WPM8x0t7YSDhmxyUqR3wRKcZnIQXH+q38KIebeCXTjh1vYw+uaHO4TM7TkTPzzY1os77m7YQvSp8ujgWkPapXcvhDuExSTra9VEX2UvYK1nAn2tffuUvyVLxczsiX5nygzZ8C+MEXjtW7OoqoVTbQsYots4NGupXMs1GumizevgSm+fOLc1+QPnWPa9KO2L2ro6iR9Kwo87A2JqiX+py/YWuS9Iad4YBhRy9G6hekT9GT2J+deZ3rT/A17cZu3eWLyRYZz9jvlv5Ce2Uq8QjwRa9SpXdPn+JMmng25qw3uL5HrNxsfRzF3aVytgID9n5IC8PuigDvTIqOeuXR34qZLuB7+lsGL5RzA7wC5QPMBqR4SYB3Tp+Ce3hZD/s21yNWOn1zl2AcWoHHPjKa3M55O8NdSZGHvWf3y71RU3KBQvfeabyRyu/chCNg2F3+nnHP9GnSbcUywPo9HXW3dPK2+oUlE1bZR03+dioqF9x7x0gR9eHcoleKcOksnqPS1fadH8dUSPD66tILhDect7ulTwdbsRyA5DiRJ69DUARx+cb7HHAB5c2rnH1YEK4SHXeLFK8LINdKkqhvInnvA/3HPvKp/orepU7eKX1aU0E696uicvwYNJeG5S7p08O6ya+A89dm4i7p0xtbsbyOYNE0bVms91bWtrlrt6PSDvdtWZf48Lyw2G4ri+RN1kD066yzWbMncSnLtmHlSz9u5EVebqv3f+aEO5BiNlyT9i7yCKxoCSEucXSd1yVAvBXoI3x2VYVuKgNqQ3dStviTVx0ZsxnIOwYcrXCOpjQ/o3aYPn0/wHkLWED6QVJGYC0TbfCvSzXQwTGm6le0xfmcNekyTjtcamG7Bl0YfOo749GHNUNfHmSdKddE+4Y2/zUpLqS3KGfVNFc61TWYxFQj+DSuvuG5vkffCELZPVNqbNLGU3nckVM+i8g/OMbneF1FI8W+fZ0T/jJ9eiogPUNsd2hwqRZ/dWKqnPLfC6lXF/UGs6szZefPPL78l4KGGlvFwyU2scAUhoVBPAcQYm+yNm3Uk4B+d+lsBUoe8dc3BP07UrS8q7CXI3sxES8ZrkjDV/PTUK27cmhfYaBca2WFiZYm1/l9WnVznZXg8QxUlqjMIYWCX8CZrJzWM31yUrntvPsZaH/LX76cR6iHxvxN9elgK5ZzyUOOuEmDMu5eHt/bd5Y3UnAV75JXGUKvLhW8TkVH/PHOOD5xlYmxBkm7L6AW1DBq18NCqu5nwl2U5d3rm8TwF5EijmLpzVEcXXdw003lRgomdWQs4c9BBJdheDlDK8Qj8xc7RJEj0yEZL9nbo+UFCa1bQfMt7Tzhz9OnfxaeLPnzucjMZAZQBnJEi+XAlUlDozG3jsHa2Kob4rN9HOOEkrE1M7uAF+7SLC2SmuaNcfEmgBSVP3pezflWLB9EZEc21k3YUWRbEfwT+90ZeB36ACN2VhUcu4YVBF3M6Qc2hhhhDIA33M96UIYk/pGEuBXL2yHSj0FE/0jC2hNEuR09A9o/60Os3RKl58CfjcPcE58Hn/AsT8gm8gex2SyXm49++DP4+HXFP7KlH4cbhl9ikoxXOP57EWYLShVFX9/9LkZbXVEoXWcPXQjsjjSvq/CS9Ds/jnKmS92FPa183M4KM5acCoPu+8zbWD9dOfHem7z5IsRLJg5Ku7y7PhS2GBRVCSJdPGJA5lQ6K157dx7wU1hOzy/+/Q/V9eXz4jy40R/P53wAE/Hi8mz5pRYnrPJs6BAbe20qfK+EwlQ7KyMIszy9V5bTmW006nn6abjb4mHBwcDQCNLojWt8GtvhHTyMSW9yoqSZ7nmKtqzuQMR+o3SEIPZzmUZDuxs83eXKV1maemBp9HR5+EHar4E+VMtPFW//d8przWR67KdDIXZwpIjpgozZsR3ss5HrmwhOF6YpkXud9bxuWvm4akVMtL4k9/MwglLxBsMhwcSD1dLjKZCQFEeDo9/1+cxxf10Rl7QdJYRD3MyHjAZ2fEpZ8yf1Q3aTDPkcB9oay/AH51BCkundr99KO/4N+np/ne80PLjRqhecn8Cbz6T9p1TITUvKkktrNt0aOzo8ySUkUcKFVm+l+v4CJb9qIvJhdiaQSEt86OA5RFVRmqtVAbeRricaTYQbmAjnpzsJD4pL7+2X4khTFp0reMEdqnyreUKiaPLuI7mzWr/iov5GXXRqP6+YMu/OppQbU/G4NviSHV9toP6xVkSq98oVbkjI9ywx9jTxJundokSjkjyRnejvmv9v4rCx6Afg7KkqvX9BLmH4wmv245KqTC3uEiX6e4VKTKiAi9erD0soebT4xC2Oi/J9EbmE/HnpuGAybHXqKZMi+queNOy9oKgqlVMSlbE14RuhfETCaXlzy5s3UNw0NgN4CZcwQgnzOgzxGXFLCMqZvs6jP+JGy863OgNvbIrrTvyd5pKsK8+biMl7A+fTdsC/DB0uICqrsddJGBGsaZa3KYgVZwvKPMropszs+MO9acR2VsrwTdWjwt63ghr8lNCs48mYd8zEqyv6Tj9eVmi+h0F8lrDr+5d4PskYSmjrKU6rhHpDcj4J4AaFrCkM/qdIyzJP/bd+2Yj9Ki+XksKFo3Q0i/HBgUaospCsaVqaWhMYZKJUJGLXWuUpp7E0XCjxAax6l1piSmtnFyKKFCueat6HdjcV0+ihRfYk2vNhaPjVfilBV3oeVajOlmWRp7YfugZuV2a4YWRXeVFumAZveyAco+pyXKGmR9B3BIujN6AeGYmbMsQ+zEGJ1+y8GYJXBTt2FFL7lOvWDW2JsXZl4XzneQcyzhAJr7OJuLVz9MmsIS6JzXq1t/r+CfJS0ChTYGgpCsN9XqgniNhXCnYxnmeUSosyCw75yO08BFcXX291C/7zuwE9kbhPOFPOuxEV00p3Sifkp9aZpAycdqa1q+4H4uGglPrc13ZAP5meRuhN5GZM9hOISY7L0Z0wWmXFuN3KCdN1Tdf5PyyRF+24zlbR4VEtho9P8bQampNxN0NsOqQoOg3P1aQrR3BbbWjiD9OGIKSGQn5mo8ylx7wyOBoK99SHCd0dA7IF0w8rkgLGuk1oZBG+rBhkPLejJvVvmBrj+hzeDCedmAEJfUUmgY7jOWuI1QkfyVSd9DfMXww8SuWY3nPSFpr88ZEIZiMY2vtewoSxZsjpheYxzvfEzas4zmEI5esJuoaqTCrLetlWrcNXgd6EER92AMNrGrOFHgfOWA9JM88cv6+A90d0SoeFjn6p9MqqDBOYTlCaH2ZE9+I+x3MKo0hjZXrR2EhSPLbvVMluY1KYboX7B8UmNtAHLzEzwELwhuUVt6pRsJplM2DQvVCnXXquK0/IHW9Sg2nO8bOzg6JEO5qoF8WtoJUlA2vN6KVEzp+nbA0/ivybNyjzqKevDwodlVPD0XBSm2fAZ7qN1T473cXFTfBZbpTma2KUJAdnKCVcIfyMoqQZqM6CGNopV+BmAri77KYv5kKLvma25ApOJjKVeeOuXQ7o2ItFSr6UqdH4E1VT3GQ+nI+dbutEtgMnD0Zj2O9DkIN9ynk9QlASv98TxEpH1AMV+awv9iUIFhrYfalZdUoSBram4As0OzBCyQbN+N48rNZm227bJVc/VLIAV7R6AHYyJr008WzNWOJp8j1yaXdBnG2AuZku95uW+D4xIhP5sgB/zMS2++uuKI9tQWiE3qUfY6zDoNuw35I2Tseg+So48fXDt589A7/tHjgnm6byO/saVaGBDwwCNwAf5URabh+9JRAL1sOxLoVc5Fbfd66dtSKF0ILRxWMn1V6BY9cbHb0XyiajuupMk4V7X5ZxXUThmhtdnfl+k2PsMD4tfY6jWbEQGLp5TJsUwQ/ZqfwWDH9WyhBcMHTSNGm9z2e2H1u4lLTrFF42cxAADGKQ1c2W6chG4N6xydUGyj8Tlp/W5dJDzlIQlGpMmiy3i91o1LbtaLTYyoKKbjc7gLJNW1S3CekHw/WDWT1eT5jO1+9T7nErB5kRms4m66bIAv/Sx3g6OG7o+5EdpBVHGgSRD7HUM+jjL37xi1/84he/+MUvfvGLX/ziF8+B/wFQxlxNTL3RfAAAAABJRU5ErkJggg==" alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">Vimala College (Autonomous) (Rating 4.0)</span>
+    </div>
+
+    <!-- Rating Stars -->
+    <div class="rating">
+        ★★★★☆ 4.0
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('about')">About</button>
+        <button onclick="showContent('courses')">Courses & Fees</button>
+        <button onclick="showContent('admissions')">Admissions</button>
+        <button onclick="showContent('scholarships')">Scholarships</button>
+        <button onclick="showContent('facilities')">Facilities</button>
+        <button onclick="showContent('faculty')">Faculty</button>
+        <button onclick="showContent('reviews')">Reviews</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="about">
+        <h2>About Vimala College</h2>
+        <p><strong>Written By:</strong> Collegedunia Team</p>
+        <p>Vimala College is a Roman Catholic women’s college located in Thrissur city of Kerala, India. It was established in 1967 and bifurcated from St. Mary’s College, now affiliated with the University of Calicut. The college is accredited by NAAC and approved by UGC.</p>
+        <p>Vimala College offers 18 UG and 13 PG programs and is a Center for Research in English, Physics, Commerce, Social Work, and Economics. Admissions are merit-based for most of the courses.</p>
+    </div>
+
+    <div class="content" id="courses" style="display: none;">
+        <h2 style="text-align: center;">Vimala College Courses</h2>
+        <h3>Undergraduate Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Specializations</th>
+                    <th>Eligibility</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>B.Sc</td>
+                    <td>Mathematics, Statistics, Physics, Chemistry, Botany, Zoology, Family and Community Science, Computer Science, Textile & Fashion Technology</td>
+                    <td>Passed class 12th</td>
+                    <td>₹71,700 (Total Fees)</td>
+                </tr>
+                <tr>
+                    <td>BA</td>
+                    <td>Economics, Sociology, English Language & Literature, Malayalam Lit, Functional English</td>
+                    <td>Passed class 12th</td>
+                    <td>₹54,000 (Total Fees)</td>
+                </tr>
+                <tr>
+                    <td>B.Com</td>
+                    <td>Finance</td>
+                    <td>Passed class 12th</td>
+                    <td>₹58,200 (Total Fees)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Postgraduate Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Specializations</th>
+                    <th>Eligibility</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>M.Sc</td>
+                    <td>Physics, Nutrition and Dietetics, Home Science, Chemistry, Zoology, Botany, Mathematics</td>
+                    <td>Allied UG degree</td>
+                    <td>₹45,000 (1st Year Fees)</td>
+                </tr>
+                <tr>
+                    <td>MA</td>
+                    <td>English, Economics, Malayalam, Sociology</td>
+                    <td>UG degree in relevant discipline</td>
+                    <td>₹37,500 (1st Year Fees)</td>
+                </tr>
+                <tr>
+                    <td>MSW</td>
+                    <td>-</td>
+                    <td>UG degree with at least 50%</td>
+                    <td>₹37,500 (1st Year Fees)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content" id="admissions" style="display: none;">
+        <h2>Vimala College Admissions</h2>
+        <p>Admission to Vimala College is merit-based for most courses, with entrance-based admission for MSW and Ph.D. programs. The process is available both online and offline. Candidates can fill out the online application form or get it directly from the institution.</p>
+        <h3>Application Process</h3>
+        <ol>
+            <li>Visit the official website of Vimala College</li>
+            <li>Download and fill out the application form</li>
+            <li>Make payment through online or offline mode</li>
+            <li>Merit list will be published based on qualifying exam or entrance exam scores</li>
+            <li>If needed, attend an interview or group discussion</li>
+        </ol>
+    </div>
+
+    <div class="content" id="scholarships" style="display: none;">
+        <h2>Vimala College Scholarships</h2>
+        <p>Vimala College offers various scholarships, including:</p>
+        <ul>
+            <li>Post Matric Scholarship For Minorities (PMS)</li>
+            <li>Central Sector Scholarship (CSS)</li>
+            <li>State Merit Scholarship (SMS)</li>
+            <li>District Merit Scholarship (DMS)</li>
+            <li>Suvarna Jubilee Merit Scholarship (SJMS)</li>
+            <li>Music Fine Arts Scholarship (MFAS)</li>
+        </ul>
+    </div>
+
+    <div class="content" id="facilities" style="display: none;">
+        <h2>Vimala College Facilities</h2>
+        <p>Vimala College offers a variety of facilities for students, including:</p>
+        <ul>
+            <li>Sports facilities (Sports Hostel, International Aquatics Complex, Basketball Court, etc.)</li>
+            <li>Hostel accommodations</li>
+            <li>Library with a wide range of books</li>
+            <li>Wi-Fi-enabled campus</li>
+            <li>Health services</li>
+        </ul>
+    </div>
+
+    <div class="content" id="faculty" style="display: none;">
+        <h2>Vimala College Faculty</h2>
+        <p>The faculty members at Vimala College are dedicated and well-qualified professionals who provide quality education and guidance to students.</p>
+    </div>
+
+    <div class="content" id="reviews" style="display: none;">
+        <h2>Vimala College Reviews</h2>
+        <p>Vimala College has received positive feedback for its academic programs, faculty, and infrastructure. The overall college rating is 4.0 stars out of 5.</p>
+        
+        
+    </div>
+
+    <script>
+        function showContent(contentId) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.style.display = 'none');
+            document.getElementById(contentId).style.display = 'block';
+        }
+
+        function likeReview() {
+            document.getElementById('review-text').innerHTML = 'You like this review.';
+        }
+
+        function dislikeReview() {
+            document.getElementById('review-text').innerHTML = 'You dislike this review.';
+        }
+    </script>
+</body>
+</html>

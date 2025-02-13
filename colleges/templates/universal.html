@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Engineering College (Rating 3.7)</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center; /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px; /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(255, 255, 255); /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+        
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
+            border-radius: 5px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="data:image/png;base64,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" alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">Universal Engineering College (Rating 3.7)</span>
+    </div>
+
+    <!-- Rating Stars -->
+    <div class="rating">
+        ★★★☆☆ 3.7
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('about')">About</button>
+        <button onclick="showContent('courses')">Courses & Fees</button>
+        <button onclick="showContent('admissions')">Admissions</button>
+        <button onclick="showContent('facilities')">Facilities</button>
+        <button onclick="showContent('faculty')">Faculty</button>
+        <button onclick="showContent('reviews')">Reviews</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="about">
+        <h2>About Universal Engineering College</h2>
+        <p><strong>Written By:</strong> Sapna Malik</p>
+        <p>Universal Engineering College was established in 2011 and is backed by Universal Educational Trust, registered under the Indian Trust Act of 1956 at Ernakulum registrar office. The college aims to provide quality education for those who strive for it. The trust is also committed to supporting financially backward students and promoting the upliftment of socially backward communities.</p>
+        <p>The institute offers opportunities for personal improvement, intellectual advancement, and professional development, including placement opportunities. Universal Engineering College is approved by AICTE and affiliated with the University of Calicut.</p>
+        <p><strong>Departments:</strong></p>
+        <ul>
+            <li>Department of Civil Engineering</li>
+            <li>Department of Mechanical Engineering</li>
+            <li>Department of Electrical Engineering</li>
+            <li>Department of Electronics and Communication</li>
+            <li>Department of Computer Science and Engineering</li>
+        </ul>
+        <p><strong>Library:</strong> The library has more than 5000 volumes of textbooks, over 40 journals/magazines, and access to over 275 e-journals.</p>
+    </div>
+
+    <div class="content" id="courses" style="display: none;">
+        <h2 style="text-align: center;">Universal Engineering College Courses & Fees</h2><br>
+        <h3>B.Tech Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                    <th>Cutoff (Rank)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mechanical Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Computer Science and Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>51492 (KEAM)</td>
+                </tr>
+                <tr>
+                    <td>Electrical and Electronics Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Electronics & Communication Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Civil Engineering</td>
+                    <td>₹5,02,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>B.Tech Lateral Entry Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Computer Science & Engineering</td>
+                    <td>₹4,01,500 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Civil Engineering</td>
+                    <td>₹4,01,500 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Electrical and Electronics Engineering</td>
+                    <td>₹4,01,500 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Electronics & Communication Engineering</td>
+                    <td>₹4,01,500 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Mechanical Engineering</td>
+                    <td>₹4,01,500 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+                <tr>
+                    <td>Thermal Engineering</td>
+                    <td>₹1,80,000 (Total Fees)</td>
+                    <td>17 Mar - 31 Jul 2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content" id="admissions" style="display: none;">
+        <h2>Universal Engineering College Admissions</h2>
+        <p>Admissions to all courses are conducted through the Common Admission Process, and students must apply online via the official college website during the application period.</p>
+    </div>
+
+    <div class="content" id="facilities" style="display: none;">
+        <h2>Universal Engineering College Facilities</h2>
+        <ul>
+            <li><strong>Library:</strong> A well-stocked library with 5000+ volumes and access to various journals and e-journals.</li>
+            <li><strong>Computer Labs:</strong> Equipped with modern technology and computers for practical learning.</li>
+            <li><strong>Sports Facilities:</strong> Indoor and outdoor sports facilities to promote physical fitness.</li>
+            <li><strong>Canteen:</strong> Serving healthy food options at affordable prices.</li>
+        </ul>
+    </div>
+
+    <div class="content" id="faculty" style="display: none;">
+        <h2>Universal Engineering College Faculty</h2>
+        <p>The college has a team of experienced faculty members who are highly qualified in their respective fields. They are dedicated to providing quality education and ensuring students' overall development.</p>
+    </div>
+
+    <div class="content" id="reviews">
+        <!-- What Students Say Box -->
+        <div class="what-students-say">
+            <h3>What Students Say</h3>
+            <div class="feedback-box">
+                <!-- Like Box -->
+                <div class="box like-box">
+                    <h3>Like <span class="emoji like">👍</span></h3>
+            <p>The teachers are very friendly and nice. The surroundings are neat and clean, with a greenish view. Lectures are well-conducted and easily understandable.</p>
+            
+        </div>
+        <div class="box like-box">
+        
+            <h3>Dislikes <span class="emoji like">👍</span></h3>
+            <p>Programs and other cultural activities are very limited. There is no free time after college, and we can't leave the campus at will.</p>
+            
+        </div>
+    </div>
+        </div></div>
+    <script>
+        function showContent(section) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach((sec) => {
+                sec.style.display = 'none';
+            });
+            document.getElementById(section).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

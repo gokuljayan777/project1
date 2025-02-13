@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mar Dionysius College Pazhanji (Rating 3.6)</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center; /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px; /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(255, 243, 243); /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+        
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
+            border-radius: 5px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="data:image/jpeg;base64,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" alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">Mar Dionysius College Pazhanji (Rating 3.6)</span>
+    </div>
+
+    <!-- Rating Stars -->
+    <div class="rating">
+        ★★★☆☆ 3.6
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('about')">About</button>
+        <button onclick="showContent('courses')">Courses & Fees</button>
+        <button onclick="showContent('admissions')">Admissions</button>
+        <button onclick="showContent('reviews')">Reviews</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="about">
+        <h2>About Mar Dionysius College Pazhanji</h2>
+        <p>Mar Dionysius College was established in 1982 and is affiliated with the University of Calicut. The college is accredited by NAAC with a grade of “B”. It spans across 13.3 acres of land, providing essential facilities to its students. The college offers both graduate and post-graduate programs in commerce, science, and arts, catering to a wide range of academic interests.</p>
+        <p>The faculty members at Mar Dionysius College are highly qualified and experienced, dedicated to providing the best educational experience to students. Their expertise helps in nurturing and enhancing the skills and knowledge of students, preparing them for future challenges.</p>
+
+        <h3>Facts and Figures:</h3>
+        <ul>
+            <li>Established in: 1982</li>
+            <li>Affiliated to: University of Calicut</li>
+            <li>Accreditation: NAAC “B” grade</li>
+            <li>Institutional Area: 13.3 acres</li>
+            <li>Library: Well-stocked with over 10,000 textbooks, 135 reference books, 20 journals, and 130 CDs and videos</li>
+            <li>Computer Lab: Equipped with 68 computer systems and internet access</li>
+            <li>Scholarships: Financial support available for students, including ST/SC grants from the government</li>
+            <li>Location: 6 km from Kunnamkulam town and 14 km from Guruvayoor Railway Station</li>
+        </ul>
+    </div>
+
+    <div class="content" id="courses" style="display: none;">
+        <h2 style="text-align: center;">Courses & Fees</h2>
+        <h3>B.Sc Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mathematics</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Psychology</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Physics</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>BA Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Economics</td>
+                    <td>₹54,000 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td>₹54,000 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>B.Com Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Computer Applications</td>
+                    <td>₹58,200 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Finance</td>
+                    <td>₹58,200 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content" id="admissions" style="display: none;">
+        <h2>Admissions</h2>
+        <p>Admission to Mar Dionysius College is based on merit, determined by the marks obtained in the 12th grade. Applicants can fill out the form on the college’s website and submit the necessary details. Shortlisted candidates will be required to visit the campus for document verification.</p>
+    </div>
+
+    <div class="content" id="reviews" style="display: none;">
+        <h2>Reviews</h2>
+        <p>At the time of admission, I had many doubts about which college to join. The main reason for choosing Mar Dionysius College was its location in my hometown and because my cousins, who are alumni of the college, are well-settled with good jobs. The merit list came out, and I got the seat. My four teachers from the Department of Management Studies were like mentors who guided me through the course. The college has a mixed campus with both aided and unaided courses. Politics is a prominent part of campus life. Overall, I had a good three years at the college, where I could explore myself and learn with the help of my teachers.</p>
+
+        <h3>Positive Remarks</h3>
+        <p>The college formed various student clubs covering a wide range of co-curricular activities, enriching campus life. The supporting union members strengthen the students in conducting programs, making the college experience more rewarding.</p>
+    </div>
+
+    <script>
+        function showContent(contentId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+
+            const tabs = document.querySelectorAll('.tabs button');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tabs button[onclick="showContent('${contentId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

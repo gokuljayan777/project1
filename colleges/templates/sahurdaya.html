@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahrdaya Institute of Management Studies (Rating 4.4)</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center; /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px; /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(234, 217, 217); /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+        
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
+            border-radius: 5px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="https://sahrdayasims.ac.in/wp-content/uploads/2024/12/shrdya-mba-white.webp" alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">Sahrdaya Institute of Management Studies (Rating 4.4)</span>
+    </div>
+
+    <!-- Rating Stars -->
+    <div class="rating" style="text-align: center;">
+        ★★★★☆ 4.4
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('about')">About</button>
+        <button onclick="showContent('courses')">Courses & Fees</button>
+        <button onclick="showContent('admissions')">Admissions</button>
+        <button onclick="showContent('ranking')">Ranking</button>
+        <button onclick="showContent('reviews')">Reviews</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="about">
+        <h2>About Sahrdaya Institute of Management Studies</h2>
+        <p>Sahrdaya Institute of Management Studies (SIMS) is a premier institute located in Thrissur, Kerala, offering high-quality management education. It is known for its commitment to fostering academic excellence and providing the best practical training opportunities.</p>
+        <p>The college offers a range of management programs including MBA with different specializations, and aims to develop both academic and practical skills in students to make them industry-ready.</p>
+    </div>
+
+    <div class="content" id="courses" style="display: none;">
+        <h2 style="text-align: center;">Courses & Fees</h2>
+        <h3>MBA Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>General MBA</td>
+                    <td>₹1,50,000 (1st Yr Fees)</td>
+                    <td>2 years</td>
+                </tr>
+                <tr>
+                    <td>Tourism and Hospitality Management</td>
+                    <td>₹1,50,000 (1st Yr Fees)</td>
+                    <td>2 years</td>
+                </tr>
+                <tr>
+                    <td>International Business</td>
+                    <td>₹1,50,000 (1st Yr Fees)</td>
+                    <td>2 years</td>
+                </tr>
+                <tr>
+                    <td>Marketing Management</td>
+                    <td>₹1,50,000 (1st Yr Fees)</td>
+                    <td>2 years</td>
+                </tr>
+                <tr>
+                    <td>Finance</td>
+                    <td>₹1,50,000 (1st Yr Fees)</td>
+                    <td>2 years</td>
+                </tr>
+                <tr>
+                    <td>Human Resource Management</td>
+                    <td>₹1,50,000 (1st Yr Fees)</td>
+                    <td>2 years</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content" id="admissions" style="display: none;">
+        <h2>Admissions</h2><br>
+        <p>Admissions to the MBA program at Sahrdaya Institute of Management Studies are based on merit, with a strong emphasis on academic performance, entrance exams, and personal interviews. The application process is online and requires submitting the necessary documents.</p>
+    </div>
+
+    <div class="content" id="ranking" style="display: none;">
+         <h3>India Today Ranking <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACICAMAAABqWSYLAAAAgVBMVEX////FGRXeenj89fXGHRnJJyT88fHHIh777u7STEjzzs3uvLvKLyvUVlP12djccnDhiojfgn/RR0T66enPQj7aa2nooqDpqKbmnZvjkY/NNzPvvr3JKibww8Lz0dDefHr34eHghYPMNTHWXFnrrqzOPDnjkI7VWlfttrXabWrYZGF+pRLyAAAQ7ElEQVR4nO2d6ZayMBKGQUAExX1fcW2b+7/AkU1TS0iCDXPOzPf+7AaER1KpVFVKyzJTfD59dMv/NDlBTY78uc5GOGjtZH9aL1IlUapgOg2i6CcZnR7LZxh3K25jKH7mTnKQ81gU+j3PDJ/zTxR69kej/E++jZQ47LmzuXBMkLFwInxuLtffb4PF4znkr2T1XeHgsexe95/rLb9+8hrSguWv2HMNYJXPOIgmfe6l0II1EY6Jqt7TpqQFy57H3LnmsDLy80lI3i8dWPFdvEr/rwgYSA+WPeHOrQfrpf1viC6lA2stHiMzDY1KE9b+wJxbG5ZtD5CF1oDVC+AdYd4tSBOWfWVsxBewbDcA+DVgPdFtsS97s9KF5a7pud/Aer1cS2EgqWE5CTr/Hv89DYV0Ydn3ITn3O1i2v/nQUsMS/IZCzNfXsLRh2R1iUb+EJdJSwzqR04NeQ0yk0oflkcn6W1i2/3YtlbCGW3r2rSkoMunDsiP8TTKwuuKU5fq+95Lvu/hSpQallVfC2jBnt+49GMByN+hcBlZvKqK4HQ5hGB52z+V4Md1zyILCg1DBQn5DLo/zZ5qUASx7i2y8CtZW9KV6x2UyoNcsHAAVrBt7T50miFTIBJb9C997I1gvOcczsTyFt6uARfyG4gPoDN2ojGD5T3CuKayXhiN88UX2BShgHYjfkAsbhoZlBOttYnLVgGU5qwu8ZP5qKWB1JPczbTespYLlArPsgueoA+v1lohn2YXhqYYl+g2+aPjcdr0HFazoFzzZQFy+1oNlhXdwyWzZUg1L9BuCjXjotVXvQQWrM4SPJvo2NWFZT/Ez87ejEtZMvOgGhLXa9R6UsFAYSQya1oXlQBOUjsNKWDfhn4MhXPiMGmAilRpW9wc8mhA0VcGayxZvR+BwpWdWwXKuwv9eb/ZBvOVLm96DGhaetz9xJBWsqXSlCwzh62WphCXCScdsF6w/ZQH7JqQBCyQKhPXcF7DEgWX7h2pY4qCdpyMbGIZ5i96DDqwYTvbvoGl9WEM8/1fAGoqO2Tn9SyyuA1w+89SIdGBZK+CmvnN29WGB4EQaxauAJfoNReAdTBAtJsW0YKGlWRk0rQ8LXvBRBQv4DYVbBUx8i0kxLVhWCOMFRdC0PixrJF7uXAVrJfynfKehif9tzTHVg2U9gLPl5dUIfwXrVAHLER2Xd45iLZ4+kJRi/L00Yc1g8C0Pmn4BC/gOVW8WGHHv+BUw+rnVb0OasFDWLg+a/pXN2lTAEl9B/8D+ub2kmC4sB9xeHnZrYTYEr5Aw7+1AZKStpJguLJxeGTmt+FljBLUUNPFtJcW0YeEF9fMbWE9NDx58AlgGAhOPIriNSR9WD6YEg9kXsMAC6hJLYYl+g70dPz4a/TdKavRhWTuwoHYf9WEBR9OOHBks7ZRtSyU1BrBQBv1y7NWFBdbRqZslgbWTZwOQTk3xATKBhRbUi7gmLBCgqoqUwhm4Su14DyawrCW08ZuasOC6fBtbElhDJikrUytJMSNYXbigvohGTB8WiupnH8rCAn6DQq14D0awrIP8u9aGNYRWOw8acLBmKGdWqVaSYmawrLMJLDaIGaISj9wt52DBQa9SG96DIax4im+yAhaT3emtUbVDUWTFwOoalXq1khQzhCUpZ9GENVtF+G0pwnkMrL6238DfaQMyheUsasLqDp+dORlYZfaDwnJ+8bEKtZAUM4VlHS/4LqWw9o/V7ZlqtT4vggFjgt71cRQWzC1el5zgQG3eezCGZW14u8vASstKcvF8X35tGXShsM7icRKDBNbjLZTUmMOacRWLElgKRXF5UQILrhYkGRzoXDSfFDOHheo6voAVfKwMgQX8Bml07wyu99O091ADlsMu2cxhRYJFxrCg3yAth4Q7CRr3HmrAwuuVerDcRSxcEsOCfoPUK4BL8sZLaurAQkHTWrAGG2CGECzooPiyfcAoOti491ALVo9xro1g+VcUrUOwQlKTJBFaPzZcUlMLFgqaCk/U5adKhCq64cdHsGDdTpUDBSMTDZfU1IPFbTvS3bszSAgqDAtUQlYPLui7Nuw91IQVk/CJ3obyy3Vz5CZ4ACuBfm+l2UaromZLasK9+9YblvAnWXB7JRyUHVgJy3W9wT1tVRBLXKGd6OV7IKuoqJLZeeJtVMwFf6Durv/WM6+w6PWFP8mGgLN79kU9Cx8nvK1Wq+Vms3mcS202y1s/HM6qXMZZPz2P0+1Q7Wo6B/FGnrExgX/6p3/6p3/6p3/6O3XjY/+2Xj826/Vtd6yc/f+/NTtsfoPtvtw7n7bAijrL8L/Ri6kpdeqIVuzEq8WdbbOyD84HGa9ncbkF1qjTmTzWiu5sMs3Owp0KPVlu5DHGVevo4QQfvrEq12YS4fWnsxttK9LBfrSO2fuZyM/JPsa7BKN1aFqVACLMg8+SgoY+3JPcTtD4rr/8A1jdZ6TKb7r3MYdLASuXN+08TSIpKDMthKzO5Av15EvDPskcjJyvYTm7H61U8H1Dn1gLli1pziZ9Sng7QsiKyTNxnasy0XhluqlG836BBFhxh83dcCdF5GvUhfXSPtnp4cIpcLE1In1bJN0JmWxndh39+xVOfH9E3ySVtR8j82MA6zVkEkU8IdcRVzmJISv6gQE/wmnfn6zqxuR+S5WwnLWk2YTsvCuM4BjBesE+xWpY5JpifIsW9ZCGOfmDEet+ycJRZvdbfEIOqzsxLFx5WRCQqjOE9Tr9qXq5Ypp2Wwjn0IQv0xSNGa9F2tb0frNTM1jdjlH1WK6tGMc0hmV7Z4XnxWTdxDpuh/YSYXoBUuteTATG92sXsJxTDVaQljks203iKlZstkjEQZMBA+phE+teHmN+vwUsSXWMUtvPSKwBC2bxiXALyUygjptW1y3w0CbW3X1Y38G66boMRPP35shasIRaGiJJKyixToTxzNFOHnrEu8dcndt9wWLrF9J/efdoMRqNkujuyV69qJyu68Gyr1KHnraQzATquIdkIKJ+e8S6fzrURkQBPNid00N2fPWjO0iWYRGXcWbhMrmwvNzSiCBYru95+8Fg4Hnyrn/ZcdIlnYQ+bI24wgMRVijNiHX/7Hx1iNDR/pMeQj8w1XaMOpI7w3XAPfZ+xz5bcgjD4zAeHsPdbT1J5tJXU9YXkvEbiiuL90W/aNA3m9hiid9aXAzBYhabM8Zx9zuc5e0tuVL+wqtGsOAk/no111fJpgO+KzjcVCgKVmJREyLsmibWnbYQNYTFzISXlWRsxCN6cOHVVsLKbuU4vrOvF5v4ZltI5oJVBcQZ+7gP1LpXbyBTw2I2ftzlVXTOhk6cuclVwnopftD2rKxzJPEbcsFiETppvns9EOs+jb+ERTd+bCsrDteEVr51RgfWa2AsGAhcOSbvN+R6gENDXG9ejjXiu6t2CCth0Y0fe8UlH4RuZnL1YL3W69R0MXVFEr8hF6rEIgOxsKLEvowUi1ElrANZZqrq7+n2h6xtB4Ilr8Pr02mOfiSsAfPg64gi4V1YXFqGvYh1n6sKKZWwiDcjjTe+RT3BDb1QBfIDoUVqIdGDdtCgjOArEuKXNZ1giXWXxga1YZFJh/0NBiRi5tIidH1Y1hOPMQ+beNh6eh/C7RTkMciAGzMBHHWPHxWsEF9SZ38VsZyp0TGAZY3xw6GjUYA9cbAviB6cuSHyJzbWZQYLu37sNE60Qg/rPs1gET8Y7a6EO/TT2RbtAsbNjcgu2xF+2XyNXzZSwcKrBb09ocQ3G5vBIhPYHcxvaDtAuokJz464uRF+V308YnQeTAELl67r7jbGBcuJIawYzVTQaKEZOnWrsN+F2xPQFTPUVqfPlgIWbgiwjdmrEOGdptOuGSwLuR/wS4Lh4nzIwZFJtz8x1flVh7NSwNqht1e3XTF+M16QzWAtbfnhsJtYYczxyCd13JXxNLU/lEoBC9+zbp8zXMW9PxrCwrOwuMKFfkOZ/ULXJ0sXyVbITBe9djUKWGiS0d+kgBIr/sEQVowWdAvhqaEdLSOj2MQTi81vhcweS3NTsAIWfWZNoR8scfuGsHpoVF0//0LWqbwQmiJpcyOHbpMp9KNZu6OAhezsXnsbGhq/xrBwmuuzgEFQPmVG2LkjsSlZ3wk939FSwcIT8kAbFrrz12yGYCl8QGz0gjcs5Dd8cls4zky3uPJ9J3QHYXuwnoaw5G8WXP+KPgWe7wgEfk8y+X0lqRTDsDYs5TBUwMI266f8B/IbxNAVjibR9gQ0HiI2GldKAQt9FZ52P1lk4F8zA5orFLDwbJiU/0Dzs2iY8NBllht0ILoGG1wVsNAEor8JDaF5LVcQdwUs7GeV+wqR7wmnZxwaoi40DUxGBlWZClgPdGndDqmg67GdjV8zWHhqO/N/h23EsIln2hPgzNjeZA+iAha+Z939/jN0T/eZISxcLbRkbxevKLAnxdwuGsZGPzejgHXAC2LNmQOf95rMjGDhAG25pkEtJN31EQhHdphMBwrQJeSACilgYTur23cDd+QbkbmiGhae2MppGJsc3/MF0bIJar0bhEW2Nev9jC4pM9sYwsIuU/FGk4JblWh7ggZhESug1/MTh7PSy5rAIkUfhfExaSGZia78m4R1w9F0nfmQpIvTmCGCVbnGwJNwUd9u1EIyFwlrNQkLGy1ZTQvQDgdD0jnHABapfClMllkLyfyBcFlMk7BoTYG6UzGt/03J6MOinmM+wRu2kMyFi0gRrAV3A3VhEU/L9pT91UlKMwst6cOiu0Nyy2PaQjITjr8gWEaNopSwqJ1QlQT0SWogCxnownJoGU4+pxm3kMyF5m8Ey6gnp7rk6Ew+vqKC2CI/52iXkwLyyWWweme61s2PNfYbcqH5u1lYTDvNKlohnbHyOUErUuocSGfXd6jlbIopF5q/m4XFdHiyA2kg9smUxeZcNEqOnMOIye4V1S3SgluV4GK7YVjML8vb2zWbaJuNmYctnA1VMZszXF7Z/Esxn3Ht8bQEk2INw2L3ovhXuiFwtpxyjWwLJxrBGvW6xQWc7mx4WJ4irguu/a5uwSsoN/olW9Mz/Sb4CwNJsaZhcV38Xi7EdSU0vHLi/ol2R85utcvC8uZBdE1+f5NrFNwH8o0DZVEmLriVN6UjkXZQUtY0LFlbfPfyM1nf+rvnbX36YXsX2ELZU73tKH5hnolzXJEbJz8FIhJpHFbVpjDX9+XtkV8v0DsOXguWOy5eXpxvrvp9GOLpi0mx5mHxOSSdh/1UWdeB5Z4dydmVEU4yFwh+SvOwrBku+NV8WGGXUg1Y/qM8HfsN1UUXuIZHTIq1AMuKdXqMYrmjys3wKgmbXkglYFz5VDiCL7BtAxb+3RIduSfRGTOF5QafSYzUTCsCtqR4/9OzuxVYVnw19Aq9B7Arpq0KzoJvgP0G1c9/kWj4p7VKO7CsWccoRLJF+WAjWP6P6BsRv0HZ3J2ECd+hmJZgWc6S27PFy01wpt8AlhvApsHYb3CVZdhkIfmu9W4LlmUdE82X674ka0dtWN71hrKTNbIm5NPKhXt7sCznxm7thXK3XE8oPVheMCY9jognoPEbfMTEl8ujFmG9JqaVooGWP92woVQ1LP+ebLhGeKgiRyvTi4sm32Gtr2Al6Rb4ty4a99E9nOYyXv58JGsWNt4PvEw+SCJ7+8FlOw+ui8nywPdY7F7BLQ72Wrs8boMBe9YKXGyvlzQuFQ+B9OokZrtHMoehAtcfzJPNTl7AMxsOw0yH3Uf5FvzZO1zDyRkiaRUJkbOKR+vVuNbXcmbH/nI8SqJoGkTX38n6Gf5vNd/8D9cwQ2aQFtklAAAAAElFTkSuQmCC" class="logo" alt="India Today Logo" style="width: 50px;height: auto;"></h3>
+        
+        <p>Sahrdaya Institute of Management Studies has been ranked #249 out of 275 MBA colleges in India in the 2024 India Today rankings, up from #262 in 2023.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stream/Category</th>
+                    <th>2024 Ranking</th>
+                    <th>2023 Ranking</th>
+                    <th>2022 Ranking</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MBA</td>
+                    <td>#249 out of 275</td>
+                    <td>#262 out of 272</td>
+                    <td>#259 out of 281</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Outlook Ranking</h3>
+        <p>Sahrdaya Institute of Management Studies is ranked #200 out of 200 MBA colleges in India for 2025 according to Outlook.</p>
+
+        <h3>Collegedunia Ranking</h3>
+        <p>The MBA program at SIMS is ranked #476 out of 608 MBA colleges in India in the 2023 Collegedunia rankings. It is graded Ba5 and holds the 15th position in Kerala.</p>
+    </div>
+    <div class="content" id="reviews">
+        <!-- What Students Say Box -->
+        <div class="what-students-say">
+            <h3>What Students Say</h3>
+            <div class="feedback-box">
+                <!-- Like Box -->
+                <div class="box like-box">
+                    <h3>Like <span class="emoji like">👍</span></h3>
+    
+        
+        <p>Students appreciate the mentoring sessions, student development activities, student coordinating sessions, and external training sessions.</p>
+        <p>Other highlights include industrial visits, rural camps, team activities, and club activities. Arts days, sports days, and extra training sessions are also highly valued by students.</p>
+                </div>
+                <div class="box like-box">
+                    <h3>DisLike <span class="emoji like">👍</span></h3>
+        <p>While the overall experience is positive, some students feel there could be more industry interaction and networking opportunities for students.</p>
+    </div>
+            </div></div></div>
+    <script>
+        function showContent(contentId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+
+            const tabs = document.querySelectorAll('.tabs button');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tabs button[onclick="showContent('${contentId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

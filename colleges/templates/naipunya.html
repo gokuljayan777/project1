@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naipunnya Institute of Management and Information Technology, Thrissur (Rating 4.1)</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center; /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px; /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(233, 213, 213); /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+        
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
+            border-radius: 5px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="data:image/png;base64,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" alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">Naipunnya Institute of Management and Information Technology, Thrissur (Rating 4.1)</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('review')">Review</button>
+        <button onclick="showContent('info')">Info</button>
+        <button onclick="showContent('course')">Course</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="review">
+        <!-- What Students Say Box -->
+        <div class="what-students-say">
+            <h3>What Students Say</h3>
+            <div class="feedback-box">
+                <!-- Like Box -->
+                <div class="box like-box">
+                    <h3>Like <span class="emoji like">👍</span></h3>
+        <ul>
+            <li><span class="like-text">Campus is neat and clean, and everyone is friendly.</span></li>
+            <li><span class="like-text">Good environment and the campus complies with SDG goals.</span></li>
+            <li><span class="like-text">Nice teachers who are very friendly and caring.</span></li>
+        </ul>
+    </div>
+
+    <!-- Dislike Box -->
+    <div class="box like-box">
+        <h3>Like <span class="emoji like">👍</span></h3>
+        <ul>
+            <li><span class="dislike-text">No proper events are conducted in the college.</span></li>
+        </ul>
+        
+        </div>
+    </div>
+        </div></div>
+
+    <div class="content" id="info" style="display: none;">
+        <h2>About Naipunnya Institute of Management and Information Technology</h2>
+        <p>The Naipunnya Institute of Management and Information Technology is located in an eco-friendly campus ensuring that every student steps in the right path and fulfills all their dreams under the guidance of eminent faculty members. With a basic motto of filling society with educated and well-trained individuals, the management teaches students with a high-standard academic structure. The management grooms every student by following numerous innovative teaching techniques and methodologies.</p>
+        
+        <h3>Facts and Figures</h3>
+        <ul>
+            <li>Year of Establishment: 1998</li>
+            <li>Approval: AICTE</li>
+            <li>Institute Affiliated to: University of Calicut</li>
+            <li>Total Number of Companies Visited: 28+</li>
+            <li>How to Reach: 
+                <ul>
+                    <li>Airport: Reaching the college campus in a prepaid taxi from the Cochin International Airport is the easiest way and doesn’t consume much time.</li>
+                    <li>Railway Station: Irinjalakkuda Railway Station is 17.1 km away from the campus, and one can hire a vehicle to reach the college.</li>
+                    <li>Bus Stand: Thrissur bus stand is 41.2 km from the college, and one can reach by local transportation.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Why Join Naipunnya Institute of Management and Information Technology?</h3>
+        <ul>
+            <li><strong>Facilities:</strong> The campus offers modern facilities such as finely ventilated classrooms, a well-stocked library, and laboratories to help students concentrate on their academics and improve their skills.</li>
+            <li><strong>Placement Cell:</strong> The college has a dedicated placement cell that supports every student to secure a better placement. The cell organizes events and activities to ensure students' overall development.</li>
+            <li><strong>Industrial Training:</strong> The college provides professional exposure by organizing industry visits, allowing students to learn techniques useful during placements.</li>
+        </ul>
+    </div>
+
+    <div class="content" id="course" style="display: none;">
+        <h2 style="text-align: center;">Courses and Fees</h2>
+
+        <h3>B.Sc Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Computer Science</td>
+                    <td>₹1,16,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Hotel Management and Culinary Arts</td>
+                    <td>₹1,21,200 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Catering Science and Hotel Management</td>
+                    <td>-</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Information Technology</td>
+                    <td>₹1,16,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>B.Com Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Computer Applications</td>
+                    <td>₹58,200 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Finance</td>
+                    <td>₹58,200 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Co-Operation</td>
+                    <td>₹58,200 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Other Courses</h3>
+        <ul>
+            <li>Bachelor of Computer Applications (BCA): ₹1.17 Lakhs (Total Fees)</li>
+            <li>Bachelor of Business Administration (BBA): ₹58,200 (Total Fees)</li>
+            <li>Master of Business Administration (MBA): ₹2.8 Lakhs (Total Fees)</li>
+            <li>Bachelor of Arts [BA] (English): ₹54,000 (Total Fees)</li>
+            <li>Master of Commerce [M.Com]: ₹76,000 (Total Fees)</li>
+            <li>Master of Science [M.Sc] (Computer Science): ₹90,000 (Total Fees)</li>
+        </ul>
+    </div>
+
+    <script>
+        function showContent(contentId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+
+            const tabs = document.querySelectorAll('.tabs button');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tabs button[onclick="showContent('${contentId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

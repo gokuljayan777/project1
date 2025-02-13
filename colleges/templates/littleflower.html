@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Flower College, Guruvayoor (Rating 4.0)</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center; /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px; /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: black; /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+        
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
+            border-radius: 5px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="data:image/jpeg;base64,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" alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">Little Flower College, Guruvayoor (Rating 4.0)</span>
+    </div>
+
+    <!-- Rating Stars -->
+    <div class="rating">
+        ★★★★☆ 4.0
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('review')">Review</button>
+        <button onclick="showContent('info')">Info</button>
+        <button onclick="showContent('course')">Course</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="reviews">
+        <!-- What Students Say Box -->
+        <div class="what-students-say">
+            <h3>What Students Say</h3>
+            <div class="feedback-box">
+                <!-- Like Box -->
+                <div class="box like-box">
+                    <h3>Like <span class="emoji like">👍</span></h3>
+        
+        <ul>
+            <li><span class="like-text">Campus, with a clean campus. Big classroom.</span></li>
+            <li><span class="like-text">Excellent infrastructure.</span></li>
+            <li><span class="like-text">Good faculty. Some teachers are rank holders.</span></li>
+        </ul></div>
+
+        <div class="box like-box">
+            <h3>Like <span class="emoji like">👍</span></h3>
+        <ul>
+            <li><span class="dislike-text">Hostel facility. Poor infrastructure on hostel.</span></li>
+            <li><span class="dislike-text">So strict. It's difficult to make friends.</span></li>
+        </ul>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <div class="content" id="info" style="display: none;">
+        <h2>About Little Flower College, Guruvayoor</h2>
+        <p>Little Flower College, Guruvayoor was established in 1955 by the serving souls of the Franciscan Clarist Congregation and is under the religious jurisdiction of the Roman Catholic Archbishop of Thrissur. It is affiliated with the University of Kerala and approved by the University Grants Commission (UGC). The college offers undergraduate and postgraduate degree programs in arts, science, and commerce fields. The college provides separate accommodation for boys and girls with all modern facilities.</p>
+
+        <p>The college maintains a healthy educational environment and provides world-class education through effective and efficient processes. It has a placement cell that offers proper guidance to students and organizes workshops, seminars, and group discussions to enhance students' knowledge and skills.</p>
+
+        <h3>Facts and Figures</h3>
+        <ul>
+            <li><strong>Type of Institution:</strong> Private</li>
+            <li><strong>Accreditation:</strong> National Assessment and Accreditation Council (NAAC)</li>
+            <li><strong>Total Number of Courses Offered:</strong> 03</li>
+            <li><strong>Total Number of Teaching Staff:</strong> 21</li>
+            <li><strong>Accommodation Capacity:</strong> 200 Students</li>
+            <li><strong>Auditorium Capacity:</strong> 2000 Students</li>
+            <li><strong>How to Reach:</strong> 32 Kms from Chandigarh</li>
+        </ul>
+
+        <h3>Why Join Little Flower College?</h3>
+        <ul>
+            <li><strong>Experienced Faculty Members:</strong> The college has well-qualified teaching staff with extensive experience in the field of education.</li>
+            <li><strong>Academic Facilities:</strong> The college offers excellent support facilities such as a gymnasium, healthcare center, sports complex, 24-hour electricity supply, transportation facility, banks, ATMs, post office & courier services, residential facilities for staff, hostels, and hobby clubs.</li>
+            <li><strong>Scholarships:</strong> The college provides various scholarships such as Post Matric Scholarship (PMS), Central Sector Scholarship (CSS), Kerala State Higher Education Scholarship, State Merit Scholarship (SMS), and Muslim Girls Scholarship to financially challenged students to help in their studies.</li>
+        </ul>
+    </div>
+
+    <div class="content" id="course" style="display: none;">
+        <h2>Courses and Fees</h2>
+
+        <h3>B.Sc Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Computer Science</td>
+                    <td>₹1,16,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Chemistry</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Botany</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Mathematics</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Physics</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Zoology</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>M.Sc Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mathematics</td>
+                    <td>₹2,620 (1st Year Fees)</td>
+                </tr>
+                <tr>
+                    <td>Chemistry</td>
+                    <td>₹2,620 (1st Year Fees)</td>
+                </tr>
+                <tr>
+                    <td>Botany</td>
+                    <td>₹2,620 (1st Year Fees)</td>
+                </tr>
+                <tr>
+                    <td>Zoology</td>
+                    <td>₹2,620 (1st Year Fees)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>BA Courses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>History</td>
+                    <td>₹54,000 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td>₹54,000 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Malayalam</td>
+                    <td>₹54,000 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Economics</td>
+                    <td>₹54,000 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Functional English</td>
+                    <td>₹54,000 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Other Courses</h3>
+        <ul>
+            <li>Bachelor of Computer Applications (BCA): ₹1.17 Lakhs (Total Fees)</li>
+            <li>Master of Commerce [M.Com]: ₹2,620 (1st Year Fees)</li>
+            <li>Bachelor of Commerce [B.Com]: ₹58,200 (Total Fees)</li>
+            <li>Tourism & Hospitality Management: ₹71,700 (Total Fees)</li>
+            <li>Pharmaceutical Management: ₹40,200 (Total Fees)</li>
+        </ul>
+    </div>
+
+    <script>
+        function showContent(contentId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+
+            const tabs = document.querySelectorAll('.tabs button');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tabs button[onclick="showContent('${contentId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

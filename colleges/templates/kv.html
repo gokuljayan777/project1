@@ -3,353 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sree KeralaVarma College,Thrissur</title>
+    <title>Sree Kerala Varma College, Thrissur</title>
     <style>
-        /* General Styles */
-        * {
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #f5f7fa;
+            background-color: #f4f4f4;
             color: #333;
         }
-
-        /* Navbar */
-        nav {
-            background: rgba(44, 62, 80, 0.95);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            transition: 0.3s;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        nav ul li {
-            display: inline;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 16px;
-            padding: 10px 15px;
-            transition: 0.3s ease;
-            font-weight: bold;
-        }
-
-        nav ul li a:hover {
-            background: #2980b9;
-            border-radius: 5px;
-        }
-
-        /* Header */
-        header {
-            background: url("https://imgs.search.brave.com/8t0497Xgk8xtQyZATfTOjhiM5FZTkvYLsHoZ4S8Ozqc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jb250/ZW50LmpkbWFnaWNi/b3guY29tL2NvbXAv/dGhyaXNzdXIvODgv/OTk5OXBtdWxibHJz/dGQyMDAwMjg4L2Nh/dGFsb2d1ZS9zcmkt/a2VyYWxhLXZhcm1h/LWNvbGxlZ2UtdGhy/aXNzdXItaG8tdGhy/aXNzdXItY29sbGVn/ZXMtMzh2NnZzNy5q/cGc_dz0zODQwJnE9/NzU") no-repeat center/cover;
-            color: white;
-            text-align: center;
-            padding: 120px 20px;
-            position: relative;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        header h1, header p {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Main Content */
-        main {
-            width: 80%;
-            margin: 80px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        section {
-            padding: 30px 0;
-        }
-
-        h2 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #3498db;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        /* Admission Section */
-        .admission {
-            text-align: center;
-            padding: 20px;
-            background: #ecf0f1;
-            border-radius: 8px;
-        }
-
-        /* Reviews */
-        .student-reviews {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 20px;
-        }
-
-        .likes, .dislikes {
-            flex: 1;
-            background: #ecf0f1;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 8px;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .likes h3 {
-            color: #27ae60;
-        }
-
-        .dislikes h3 {
-            color: #c0392b;
-        }
-
-        ul {
-            list-style-type: none;
+        
+        h1, h2, h3 {
+            margin: 0;
             padding: 0;
         }
 
-        ul li {
-            padding: 8px 0;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #2c3e50;
-        }
-
-        footer a {
-            text-decoration: none;
+        /* App Bar Styling */
+        .app-bar {
+            background-image: url('https://c1.wallpaperflare.com/preview/127/366/443/library-book-bookshelf-read.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            justify-content: center; /* Center title horizontally */
+            align-items: center;
+            padding: 0 20px;
             color: white;
-            background: #3498db;
-            padding: 12px 25px;
+        }
+        
+        .college-logo {
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px; /* Space for logo */
+        }
+
+        .app-bar-text {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(235, 225, 225); /* Set text color to black */
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            padding: 12px 0;
+        }
+        
+        .tabs button {
+            background-color: inherit;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 25px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background-color: #005ea6;
             border-radius: 5px;
-            margin: 5px;
-            display: inline-block;
-            transition: 0.3s;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* What Students Say Box */
+        .what-students-say {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Like and Dislike Boxes */
+        .feedback-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedback-box .box {
+            padding: 20px;
+            width: 48%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .like-box {
+            background-color: #6ae6a0;
+        }
+
+        .dislike-box {
+            background-color: #ea8d8d;
+        }
+
+        .feedback-box .box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
             font-weight: bold;
         }
 
-        footer a:hover {
-            background: #1a5276;
+        .emoji {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .emoji.like {
+            color: #00796b;
+        }
+
+        .emoji.dislike {
+            color: #d32f2f;
+        }
+
+        /* Courses and Fees Box */
+        .courses-fees-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .courses-fees-box h3 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: 600;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            main {
-                width: 95%;
+            .feedback-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feedback-box .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tabs button {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .courses-fees-box {
                 padding: 15px;
             }
-
-            footer a {
-                display: block;
-                margin: 10px auto;
-            }
-
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav ul li {
-                margin: 5px 0;
-            }
-
-            .student-reviews {
-                flex-direction: column;
-            }
         }
-        /* Courses Table */
-.courses-table {
-    width: 100%;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #2c3e50;
-    color: white;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-.apply-btn {
-    text-decoration: none;
-    color: white;
-    background: #27ae60;
-    padding: 8px 15px;
-    border-radius: 5px;
-    display: inline-block;
-    transition: 0.3s;
-    font-weight: bold;
-}
-
-.apply-btn:hover {
-    background: #218c53;
-}
-
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav>
+    <!-- App Bar with Image and College Logo -->
+    <div class="app-bar">
+        <img src="data:image/jpeg;base64,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" alt="College Logo" class="college-logo"> <!-- Replace with your logo image path -->
+        <span class="app-bar-text">Sree Kerala Varma College, Thrissur</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button onclick="showContent('review')">Review</button>
+        <button onclick="showContent('info')">Info</button>
+        <button onclick="showContent('course')">Course</button>
+        <button onclick="showContent('ranking')">Ranking</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content" id="review">
+        <h2>Likes</h2>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#admission">Admission 2024</a></li>
-            <li><a href="#reviews">What Students Say</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><span class="like-text">Hostel is very good and worth the fees we pay. The food is very good and hygienic.</span></li>
+            <li><span class="like-text">Campus life was really good. Teachers were very friendly. A good canteen was there.</span></li>
+            <li><span class="like-text">Lakshadweep students are also studying here. The NCC unit of this college is the best in Thrissur, and NSS units are doing great things every academic year.</span></li>
+            <li><span class="like-text">Almost all UG courses are available here, providing best education and good cultural activities.</span></li>
+            <li><span class="like-text">Teachers are very supportive. They do anything for our education. We can contact them anytime.</span></li>
+            <li><span class="like-text">Also, the hostel has good facilities with minimum fees, and food is also good.</span></li>
+            <li><span class="like-text">Professors are supportive in both academics as well as extra-curricular activities.</span></li>
         </ul>
-    </nav>
+        <div>
+            <span class="emoji like" onclick="alert('Liked!')">👍</span>
+            <span class="emoji dislike" onclick="alert('Disliked!')">👎</span>
+        </div>
+    </div>
 
-    <!-- Header -->
-    <header>
-        <h1>Sree KeralaVarma College, Thrissur</h1>
-        <p>Thrissur, Kerala | Estd 1919 | Calicut University, Calicut | NAAC Grade A++ 3.7</p>
-    </header>
+    <div class="content" id="info" style="display: none;">
+        <h2>About Sree Kerala Varma College</h2>
+        <p><strong>Established:</strong> 1947</p>
+        <p>Sree Kerala Varma College was established with a mission of strong commitment to bring up students from rural and semi-urban areas, with poor socio-economic backgrounds, on the same level as those from better facilitated urban areas. The college strives to make students competent to meet the challenges of the modern world with full social commitment and confidence. The college is one of the most well-known educational institutions in Kerala and is the biggest Science and Arts College under the University of Calicut. The college aims to preserve the best traditions of progressive higher education, ensuring complete freedom of expression to encounter diverse ideological preoccupations.</p>
+        <h3>Facts and Figures</h3>
+        <ul>
+            <li>Year of Establishment: 1947</li>
+            <li>Total number of books in the library: 70,000</li>
+            <li>Affiliation: University of Calicut</li>
+            <li>Location: 3 kilometers from Thrissur</li>
+        </ul>
+        <h3>Facilities</h3>
+        <p>The library is fully computerized with modern software. Internet connectivity is available, and a collection of Braille books is provided. The campus offers a corporate feel with top-of-the-line furniture. The women's hostel is located on-campus with good facilities and minimal fees.</p>
+    </div>
 
-    <!-- Main Content -->
-    <main>
-        <section id="admission" class="admission">
-            <h2>Admission 2024, Courses, Fees, Scholarships</h2>
-            <p>Find detailed information about the admission process, courses, and fees.</p>
-        </section>
-
-        <section id="reviews" class="student-reviews">
-            <h2>What Students Say</h2>
-            <div class="likes">
-                <h3>Likes</h3>
-                <ul>
-                    <li>Hostel establishment charge is ₹7,500, and the monthly fee is ₹4,500...</li>
-                    <li>Many multinational companies conduct campus placements...</li>
-                </ul>
-            </div>
-            <div class="dislikes">
-                <h3>Dislikes</h3>
-                <ul>
-                    <li>The college has a canteen, but it is situated at the top...</li>
-                    <li>Limited parking space...</li>
-                </ul>
-            </div>
-        </section>
-    </main>
-
-     <!-- Admission Section -->
-<section id="admission" class="admission">
-    <h2>Admission 2024, Courses, Fees, Scholarships</h2>
-    <p>Find detailed information about the admission process, courses, and fees.</p>
-
-    <!-- Courses Table -->
-    <div class="courses-table">
+    <div class="content" id="course" style="display: none;">
+        <h2>Courses and Fees</h2>
         <table>
             <thead>
                 <tr>
                     <th>Course</th>
-                    <th>Total Fees</th>
-                    <th>Eligibility</th>
-                    <th>Application Deadline</th>
-                    <th>Action</th>
+                    <th>Fees</th>
+                    <th>Application Date</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>BBA (2 Courses)</td>
-                    <td>₹54,360 - ₹58,200</td>
-                    <td>10+2</td>
-                    <td>10 May 2024</td>
-                    <td><a href="#" class="apply-btn">Apply Now</a></td>
-                </tr>
-                <tr>
-                    <td>B.Voc (2 Courses)</td>
-                    <td>₹40,200</td>
-                    <td>10+2</td>
+                    <td>Statistics (B.Sc)</td>
+                    <td>₹22,500 (1st Year Fees)</td>
                     <td>18 May - 10 Jun 2024</td>
-                    <td><a href="#" class="apply-btn">Apply Now</a></td>
                 </tr>
                 <tr>
-                    <td>M.Com (Financial Management)</td>
-                    <td>₹6,080</td>
-                    <td>Graduation</td>
-                    <td>-</td>
-                    <td><a href="#" class="apply-btn">Check Details</a></td>
+                    <td>Chemistry (B.Sc)</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
                 </tr>
                 <tr>
-                    <td>MA (3 Courses)</td>
-                    <td>₹3,380 - ₹45,600 (1st Year Fees)</td>
-                    <td>Graduation</td>
-                    <td>-</td>
-                    <td><a href="#" class="apply-btn">Check Details</a></td>
+                    <td>Mathematics (B.Sc)</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
                 </tr>
                 <tr>
-                    <td>M.Sc (8 Courses)</td>
-                    <td>₹2,780 - ₹90,000 (1st Year Fees)</td>
-                    <td>Graduation</td>
-                    <td>-</td>
-                    <td><a href="#" class="apply-btn">Check Details</a></td>
+                    <td>Physics (B.Sc)</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
                 </tr>
                 <tr>
-                    <td>MSW</td>
-                    <td>₹37,500 (1st Year Fees)</td>
-                    <td>Graduation</td>
-                    <td>-</td>
-                    <td><a href="#" class="apply-btn">Check Details</a></td>
+                    <td>Zoology (B.Sc)</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Botany (B.Sc)</td>
+                    <td>₹71,700 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>English (BA)</td>
+                    <td>₹54,000 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Economics (BA)</td>
+                    <td>₹54,000 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Sanskrit (BA)</td>
+                    <td>₹54,000 (Total Fees)</td>
+                    <td>18 May - 10 Jun 2024</td>
+                </tr>
+                <tr>
+                    <td>Bachelor of Computer Applications (BCA)</td>
+                    <td>₹1.17 Lakhs (Total Fees)</td>
+                    <td>10 May 2024</td>
                 </tr>
             </tbody>
         </table>
     </div>
-</section>
 
-    <footer>
-        <a href="#">Apply Now</a>
-        <a href="#">Download Brochure</a>
-        <a href="#">College Predictor</a>
-    </footer>
+    <div class="content" id="ranking" style="display: none;">
+        <h2 style="text-align: center;">Top Agencies</h2><br>
+    
+        <h3>NIRF Ranking <img src="https://upload.wikimedia.org/wikipedia/en/5/52/National_Institutional_Ranking_Framework_logo.png" class="logo" alt="NIRF Logo" style="width: 30px; height: auto;"></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stream / Category</th>
+                    <th>2024 Ranking</th>
+                    <th>2023 Ranking</th>
+                    <th>2022 Ranking</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Overall</td>
+                    <td>#151-200 out of 300 in India (2024)</td>
+                    <td>#151 out of 200 in India (2023)</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div></div>
+
+    <script>
+        function showContent(section) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(sec => sec.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+
+            const buttons = document.querySelectorAll('.tabs button');
+            buttons.forEach(button => button.classList.remove('active'));
+            const activeButton = Array.from(buttons).find(button => button.innerText.toLowerCase() === section);
+            activeButton.classList.add('active');
+        }
+    </script>
 </body>
 </html>
- 
